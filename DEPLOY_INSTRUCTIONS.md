@@ -1,7 +1,8 @@
-# SKYLINE Engineering — установка и деплой
+# SKYLINE Engineering — установка и автодеплой на Hetzner
 
-Актуальный исходник сайта (со всеми правками) лежит в `C:\SKYLINE_LOCAL`.
-Старая рабочая копия в `Documents\Codex\...\work\skyline-engineering` больше не используется — можно удалить или заархивировать.
+Решение: сервер и домен остаются как есть (Hetzner `167.233.221.39`, `skylineengineering.es`, DNS, nginx, `skyline.service` — ничего из этого не трогаем). Меняется только сам процесс выкладки: вместо ручного ZIP/SSH — `git push`, а сервер обновляется сам через GitHub Actions.
+
+Актуальный исходник сайта (со всеми правками) — в `C:\SKYLINE_LOCAL`.
 
 ## 1. Локальный запуск (проверить перед деплоем)
 
@@ -13,11 +14,11 @@ npm run dev
 
 Открыть http://localhost:3000
 
-## 2. Деплой на Vercel (вместо VPS/SSH/nginx)
+## 2. Разовая настройка автодеплоя
 
-Почему Vercel: это хостинг создателей Next.js, деплой через `git push`, SSL и CDN из коробки, без ручного SSH/systemd/nginx.
+Нужно сделать один раз. Дальше — просто `git push`.
 
-### 2.1. Git + GitHub
+### 2.1. GitHub-репозиторий
 
 ```powershell
 cd C:\SKYLINE_LOCAL
@@ -26,7 +27,7 @@ git add -A
 git commit -m "Initial commit: SKYLINE Engineering site"
 ```
 
-Затем на github.com → **New repository** (например `skyline-engineering`, приватный) → скопировать URL репозитория и выполнить:
+На github.com → **New repository** (приватный, например `skyline-engineering`) → затем:
 
 ```powershell
 git remote add origin https://github.com/<ваш-аккаунт>/skyline-engineering.git
@@ -34,40 +35,72 @@ git branch -M main
 git push -u origin main
 ```
 
-(GitHub попросит войти — это делаете вы сами, я пароли не ввожу.)
+### 2.2. Ключ «GitHub Actions → сервер»
 
-### 2.2. Подключить Vercel
+Этим ключом Actions будет заходить по SSH на ваш сервер, чтобы обновлять код. Выполнить локально:
 
-1. vercel.com → Sign Up → **Continue with GitHub** (вход через GitHub, без пароля).
-2. **Add New... → Project** → выбрать репозиторий `skyline-engineering`.
-3. Vercel сам определит Next.js — просто **Deploy**.
+```powershell
+ssh-keygen -t ed25519 -f $env:USERPROFILE\.ssh\skyline_deploy -N '""'
+```
 
-Через минуту сайт уже живёт на временном адресе `*.vercel.app`.
+Публичный ключ добавить на сервер (замените `user` на того, кем вы обычно заходите на сервер по SSH):
 
-### 2.3. Переменные окружения
+```powershell
+type $env:USERPROFILE\.ssh\skyline_deploy.pub | ssh user@167.233.221.39 "cat >> ~/.ssh/authorized_keys"
+```
 
-В Vercel: Project → **Settings → Environment Variables**, добавить (значения — из вашего текущего `.env` на старом сервере, я их не знаю и не должен знать):
+Приватный ключ (`type $env:USERPROFILE\.ssh\skyline_deploy` — весь текст, включая `-----BEGIN...` и `-----END...`) добавить в GitHub: репозиторий → **Settings → Secrets and variables → Actions → New repository secret**:
 
-- `NEXT_PUBLIC_SITE_URL` = `https://skylineengineering.es`
-- `NEXT_PUBLIC_WHATSAPP_NUMBER`
-- `CONTACT_INBOX_EMAIL`
-- `CONTACT_FROM_EMAIL`
-- `RESEND_API_KEY`
-- `NEXT_PUBLIC_GA4_ID` (если используется)
-- `NEXT_PUBLIC_META_PIXEL_ID` (если используется)
+- `HETZNER_SSH_KEY` = содержимое приватного ключа
+- `HETZNER_SSH_HOST` = `167.233.221.39`
+- `HETZNER_SSH_USER` = ваш SSH-пользователь на сервере
 
-После добавления — **Redeploy**.
+### 2.3. Ключ «сервер → GitHub» (чтобы сервер мог скачать приватный репозиторий)
 
-### 2.4. Подключить домен skylineengineering.es
+На сервере:
 
-Project → **Settings → Domains** → добавить `skylineengineering.es` и `www.skylineengineering.es`.
-Vercel покажет A/CNAME записи — прописать их у регистратора домена вместо текущих записей, указывающих на VPS. SSL-сертификат Vercel выпустит сам после проверки DNS (обычно от нескольких минут до пары часов).
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/skyline_pull -N ""
+cat ~/.ssh/skyline_pull.pub
+```
 
-После подтверждения работы нового сайта на домене — старый VPS (`skyline.service`, nginx) можно выключить.
+Вывод команды добавить в GitHub: репозиторий → **Settings → Deploy keys → Add deploy key** (без права записи, только чтение).
+
+На сервере прописать, чтобы git использовал именно этот ключ для github.com:
+
+```bash
+cat >> ~/.ssh/config << 'EOF'
+Host github.com
+  IdentityFile ~/.ssh/skyline_pull
+  IdentitiesOnly yes
+EOF
+```
+
+### 2.4. Первичная привязка папки на сервере к git
+
+Сервер уже содержит собранный сайт в `/var/www/skyline-engineering` (из старого ручного деплоя). Разово превратить её в git-репозиторий:
+
+```bash
+cd /var/www/skyline-engineering
+sudo git init
+sudo git remote add origin git@github.com:<ваш-аккаунт>/skyline-engineering.git
+sudo git fetch origin main
+sudo git reset --hard origin/main
+```
+
+`.env.production` и другие файлы вне git (см. `.gitignore`) при этом не трогаются — `.env.production` на сервере остаётся как есть.
+
+### 2.5. Разрешить автоматический перезапуск сервиса без пароля
+
+Если заходите на сервер не под root:
+
+```bash
+echo "$(whoami) ALL=(ALL) NOPASSWD: /bin/systemctl restart skyline, /usr/bin/npm, /usr/bin/git" | sudo tee /etc/sudoers.d/skyline-deploy
+```
 
 ## 3. Как обслуживать дальше
 
-Любое изменение сайта — правки текста, фото, кода — делается локально в `C:\SKYLINE_LOCAL`, затем:
+Любая правка — текст, фото, код — делается локально в `C:\SKYLINE_LOCAL`, затем:
 
 ```powershell
 cd C:\SKYLINE_LOCAL
@@ -77,11 +110,12 @@ git commit -m "описание правки"
 git push
 ```
 
-`git push` — это и есть деплой. Vercel сам собирает и выкатывает новую версию за ~1 минуту, без SSH и ручных шагов.
+`git push` — и есть деплой. GitHub Actions сам зайдёт на сервер, обновит код, пересоберёт и перезапустит `skyline.service`. Прогресс можно посмотреть на GitHub: репозиторий → вкладка **Actions**.
 
 ## 4. Для Claude Code (продолжение работы)
 
-- Источник правды — `C:\SKYLINE_LOCAL`. Именно туда вносить правки и оттуда пушить.
-- Секреты (`RESEND_API_KEY` и т.п.) не хранятся в репозитории — только в Vercel Environment Variables и в локальном `.env.local` (в `.gitignore`).
-- Регистрация/вход в GitHub и Vercel — только через пользователя (OAuth), пароли и создание аккаунтов от его имени не выполняются.
-- Папка `deploy/` (nginx-конфиги, `skyline.service`) — наследие старой VPS-схемы, после переезда на Vercel не нужна, оставлена только для истории.
+- Источник правды — `C:\SKYLINE_LOCAL`. Правки вносятся туда и пушатся.
+- Сервер, домен, DNS, nginx, `skyline.service` — без изменений, тот же Hetzner-хостинг, что был.
+- Секреты (`RESEND_API_KEY` и т.п.) живут только в `.env.production` на сервере и в локальном `.env.local` (в `.gitignore`) — в репозитории и в GitHub Actions их нет, кроме SSH-ключей деплоя.
+- Файл автодеплоя — `.github/workflows/deploy.yml`, срабатывает на каждый push в `main`, ничего дополнительно запускать не нужно.
+- Регистрация/вход в GitHub — только через пользователя, пароли и создание аккаунтов от его имени не выполняются.
