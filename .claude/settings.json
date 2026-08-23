@@ -1,0 +1,27 @@
+{
+  "$comment": "SKYLINE_LOCAL hooks config (installation_spec.md, раздел 64). Все хуки — детерминированные локальные Python-скрипты, без вызова модели, без отправки данных в облако.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/secret_scan.py\""
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/audit_log.py\""
+          }
+        ]
+      }
+    ]
+  }
+}

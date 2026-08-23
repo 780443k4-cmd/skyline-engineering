@@ -1,0 +1,11 @@
+{
+  "generated": "2026-08-23T10:56:45.837443+00:00",
+  "seo": {
+    "status": "PENDING_DATA",
+    "note": "No CMS/analytics connected yet."
+  },
+  "sales": {
+    "status": "PENDING_DATA",
+    "note": "No CRM connected yet; 06_LEADS is empty."
+  }
+}

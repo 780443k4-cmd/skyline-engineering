@@ -1,0 +1,17 @@
+{
+  "version": "2.0",
+  "generated": "2026-08-23",
+  "owner": "KNOWLEDGE_MANAGER",
+  "sections": [
+    "01_COMPANY",
+    "02_MARKETING",
+    "03_SALES",
+    "04_SEO",
+    "05_CONTENT",
+    "06_PROJECTS",
+    "07_SOCIAL",
+    "08_ANALYTICS"
+  ],
+  "status": "INITIALIZED_EMPTY",
+  "note": "No company facts ingested yet. All documents are PENDING_CONNECTION templates."
+}

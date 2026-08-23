@@ -1,0 +1,58 @@
+# Внешние интеграции — статус
+
+Ни одна внешняя интеграция не подключена на момент установки. Сценарий прямо запрещает
+изобретать API/учётные данные (раздел «NEVER INVENT») — поэтому ниже только то, что
+реально обнаружено или реально доступно для подключения.
+
+## Обнаружено в текущей среде
+
+Сайт найден и прочитан (публичные страницы, без авторизации): **https://skylineengineering.es/**
+— проверено 2026-08-23 через WebFetch. Страницы: Home, Villas, Process, About, Contact,
+Privacy Policy, Cookie Policy, Legal Notice.
+
+| Система | Статус | Комментарий |
+|---|---|---|
+| Сайт skylineengineering.es | `READ_ONLY` (публично прочитан) / `PENDING_CONNECTION` (для записи/публикации) | Кастомный Next.js 16-проект (React 18, TypeScript, Tailwind CSS), деплой по SSH на VPS; production-путь `/var/www/skyline-engineering`, systemd-сервис `skyline.service`, nginx reverse proxy и SSL Let's Encrypt. Для автодеплоя/публикации нужны SSH-доступ и параметры сервера |
+| Instagram (@skyline_engineering_sl) | `PENDING_CONNECTION` | аккаунт известен (см. `01_KNOWLEDGE/07_SOCIAL/instagram.md`), API-доступ не подключён |
+| Facebook (facebook.com/anteyspecstroy) | `PENDING_CONNECTION` | ссылка на сайте не совпадает по имени с брендом SKYLINE — уточнить у пользователя актуальность |
+| TikTok (@skyline_benidorm) | `PENDING_CONNECTION` | аккаунт известен, API-доступ не подключён |
+| Google Analytics / Search Console | `PENDING_CONNECTION` | нет доступа |
+| CRM | `PENDING_CONNECTION` | не определена |
+| Локальная база/поиск (векторная) | `NOT_INSTALLED` | не обязательна — раздел 5 разрешает полнотекстовый локальный поиск без неё |
+
+## Что реально доступно для подключения (проверено в реестре MCP-коннекторов Claude, ничего не подключалось)
+
+Это **не рекомендация конкретного инструмента**, а фактический список того, что существует и
+может быть подключено пользователем через настройки Claude при необходимости:
+
+- **Сайт/CMS:** WordPress.com, Webflow, Agility CMS, Netlify — если сайт Skyline на одной из
+  этих платформ.
+- **SEO:** Semrush, Ahrefs, OpenRush, Similarweb.
+- **Соцсети/аналитика по нескольким платформам:** Supermetrics, Windsor.ai (агрегируют Meta/
+  TikTok/Google Ads и т.д.; официальных отдельных Instagram/Facebook/TikTok-коннекторов в
+  реестре на момент проверки нет — Meta Business Suite/TikTok Business API потребуют
+  прямого OAuth-подключения при появлении официального коннектора).
+- **CRM:** HubSpot, Zoho CRM, Close, Salesflare.
+
+## Правило подключения (раздел 40-41)
+
+Использовать только официальные API/одобренные интеграции. Не использовать хрупкую
+браузерную автоматизацию, если есть официальный API. Если аутентификация невозможна —
+оставить `PENDING_CONNECTION`, не изобретать доступ.
+
+Публикация проходит только через:
+
+```
+DRAFT → QC → FINAL_GATEKEEPER → AUTH CHECK → SCHEDULE/PUBLISH → LOG → ANALYTICS
+```
+
+На данный момент шаг **AUTH CHECK не пройдёт ни для одной платформы** — публикация
+физически невозможна, что и требуется на этапе установки (раздел 73: "Expected: NO external
+publication").
+
+## Следующий шаг
+
+Платформа сайта подтверждена как кастомный Next.js-проект. Осталось предоставить безопасный
+способ подключения по SSH (хост, пользователь, порт и ключ через локальную настройку/агент) и
+подтвердить, какие соцсети, аналитика и CRM реально используются; секреты не записываются в эту
+библиотеку.

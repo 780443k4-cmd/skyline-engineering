@@ -1,0 +1,66 @@
+{
+  "generated": "2026-08-23T10:56:45.837443+00:00",
+  "agents": [
+    {
+      "name": "SKYLINE_MASTER",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "TOKEN_GUARDIAN",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "KNOWLEDGE_MANAGER",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SYSTEM_ADMIN",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SEO_STRATEGIST",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SEO_TECH",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "CONTENT_ARCHITECT",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "CONTENT_WRITER",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SOCIAL_STRATEGIST",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SOCIAL_CONTENT",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "SOCIAL_ANALYST",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "COMPETITOR_ANALYST",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "LEAD_ANALYST",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "QUALITY_CONTROLLER",
+      "status": "CONFIGURED"
+    },
+    {
+      "name": "FINAL_GATEKEEPER",
+      "status": "CONFIGURED"
+    }
+  ],
+  "note": "status=CONFIGURED means the agent definition is installed; it has no persistent 'online/offline' state between Claude Code sessions."
+}

@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SKYLINE_LOCAL — Дашборд</title>
+<style>
+  :root {
+    color-scheme: light;
+    --surface-1:  #fcfcfb;
+    --plane:      #f9f9f7;
+    --text-primary:   #0b0b0b;
+    --text-secondary: #52514e;
+    --text-muted:     #898781;
+    --grid:       #e1e0d9;
+    --baseline:   #c3c2b7;
+    --border:     rgba(11,11,11,0.10);
+    --accent:     #2a78d6;
+    --good:       #0ca30c;
+    --warning:    #fab219;
+    --serious:    #ec835a;
+    --critical:   #d03b3b;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --surface-1:  #1a1a19;
+      --plane:      #0d0d0d;
+      --text-primary:   #ffffff;
+      --text-secondary: #c3c2b7;
+      --text-muted:     #898781;
+      --grid:       #2c2c2a;
+      --baseline:   #383835;
+      --border:     rgba(255,255,255,0.10);
+      --accent:     #3987e5;
+      --good:       #0ca30c;
+      --warning:    #fab219;
+      --serious:    #ec835a;
+      --critical:   #e66767;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-1:  #1a1a19;
+    --plane:      #0d0d0d;
+    --text-primary:   #ffffff;
+    --text-secondary: #c3c2b7;
+    --text-muted:     #898781;
+    --grid:       #2c2c2a;
+    --baseline:   #383835;
+    --border:     rgba(255,255,255,0.10);
+    --accent:     #3987e5;
+    --good:       #0ca30c;
+    --warning:    #fab219;
+    --serious:    #ec835a;
+    --critical:   #e66767;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--plane);
+    color: var(--text-primary);
+    font: 14px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  header {
+    padding: 20px 24px 12px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px;
+  }
+  header h1 { font-size: 18px; margin: 0; }
+  header .meta { color: var(--text-muted); font-size: 12px; }
+  main { padding: 20px 24px 60px; max-width: 1280px; margin: 0 auto; }
+  section { margin-bottom: 32px; }
+  section h2 {
+    font-size: 13px; text-transform: uppercase; letter-spacing: .04em;
+    color: var(--text-secondary); margin: 0 0 12px;
+  }
+  .card {
+    background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px;
+    padding: 16px;
+  }
+  .grid { display: grid; gap: 12px; }
+  .grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .grid.cols-7 { grid-template-columns: repeat(7, 1fr); }
+  @media (max-width: 900px) {
+    .grid.cols-3, .grid.cols-4, .grid.cols-7 { grid-template-columns: 1fr 1fr; }
+  }
+  .stat { font-size: 26px; font-weight: 600; font-variant-numeric: proportional-nums; }
+  .stat-label { color: var(--text-muted); font-size: 12px; margin-top: 2px; }
+  table { width: 100%; border-collapse: collapse; font-size: 13px; }
+  th { text-align: left; color: var(--text-muted); font-weight: 500; padding: 6px 8px; border-bottom: 1px solid var(--grid); }
+  td { padding: 6px 8px; border-bottom: 1px solid var(--grid); vertical-align: top; }
+  tr:last-child td { border-bottom: none; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px; padding: 2px 8px; border-radius: 999px;
+    font-size: 11px; font-weight: 600; border: 1px solid var(--border);
+  }
+  .badge::before { content: ""; width: 6px; height: 6px; border-radius: 50%; }
+  .badge.good { color: var(--good); } .badge.good::before { background: var(--good); }
+  .badge.warning { color: #8a6300; } .badge.warning::before { background: var(--warning); }
+  :root[data-theme="dark"] .badge.warning, @media (prefers-color-scheme: dark) { }
+  .badge.serious { color: var(--serious); } .badge.serious::before { background: var(--serious); }
+  .badge.critical { color: var(--critical); } .badge.critical::before { background: var(--critical); }
+  .badge.muted { color: var(--text-muted); } .badge.muted::before { background: var(--text-muted); }
+  .board-col { min-height: 80px; }
+  .board-col h3 { font-size: 12px; margin: 0 0 8px; color: var(--text-secondary); }
+  .board-count { color: var(--text-muted); font-weight: 400; }
+  .task-chip {
+    background: var(--plane); border: 1px solid var(--border); border-radius: 6px;
+    padding: 6px 8px; margin-bottom: 6px; font-size: 12px;
+  }
+  .empty { color: var(--text-muted); font-style: italic; font-size: 12px; padding: 8px 0; }
+  footer { color: var(--text-muted); font-size: 11px; text-align: center; padding: 24px; }
+  .stale-banner {
+    display: none; background: var(--warning); color: #3a2a00; padding: 8px 16px;
+    font-size: 12px; text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="stale-banner" id="staleBanner">Данные дашборда не обновлялись давно — запустите <code>python .claude/hooks/dashboard_update.py</code> или команду <code>/skyline-dashboard</code>.</div>
+<header>
+  <h1>SKYLINE_LOCAL — Дашборд (Skyline Engineering ES)</h1>
+  <div class="meta">127.0.0.1 · только для этого компьютера · <span id="generatedAt">—</span></div>
+</header>
+<main>
+
+  <section>
+    <h2>A. Статус системы — 15 агентов</h2>
+    <div class="card">
+      <table id="agentsTable"><thead><tr><th>Агент</th><th>Статус</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section>
+    <h2>B. Доска задач</h2>
+    <div class="grid cols-7" id="boardGrid"></div>
+  </section>
+
+  <section>
+    <div class="grid cols-3">
+      <div class="card" id="socialCard">
+        <h2 style="margin-top:0">C. Соцсети</h2>
+        <div id="socialBody"></div>
+      </div>
+      <div class="card" id="seoCard">
+        <h2 style="margin-top:0">D. Сайт / SEO</h2>
+        <div id="seoBody"></div>
+      </div>
+      <div class="card" id="salesCard">
+        <h2 style="margin-top:0">E. Продажи</h2>
+        <div id="salesBody"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>F. Consequence Engine — рекомендованные действия</h2>
+    <div class="card">
+      <table id="consequenceTable">
+        <thead><tr><th>Действие</th><th>Выгода</th><th>Риск</th><th>Стоимость</th><th>Усилие</th><th>Если сделать</th><th>Если не сделать</th><th>Уверенность</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <h2>G. Журнал активности</h2>
+    <div class="card">
+      <table id="activityTable"><thead><tr><th>Время (UTC)</th><th>Инструмент</th><th>Детали</th></tr></thead><tbody></tbody></table>
+    </div>
+  </section>
+
+  <section>
+    <h2>H. Токены / облако</h2>
+    <div class="grid cols-4" id="tokenGrid"></div>
+  </section>
+
+</main>
+<footer>SKYLINE_LOCAL v2.0 · данные никогда не покидают этот компьютер · секреты на дашборде не отображаются</footer>
+
+<script>
+const COLUMNS = ["INBOX","QUEUED","RUNNING","BLOCKED","REVIEW","COMPLETED","FAILED"];
+
+async function loadJSON(path) {
+  try {
+    const res = await fetch(path, { cache: "no-store" });
+    if (!res.ok) return null;
+    return await res.json();
+  } catch (e) { return null; }
+}
+
+function statusBadge(status) {
+  const map = {
+    "CONFIGURED": "good", "PENDING_CONNECTION": "warning", "PENDING_DATA": "warning",
+    "BLOCKED": "critical", "FAILED": "critical", "RUNNING": "good",
+  };
+  const cls = map[status] || "muted";
+  return `<span class="badge ${cls}">${status}</span>`;
+}
+
+function fmtTime(iso) {
+  if (!iso) return "—";
+  return iso.replace("T", " ").replace(/\.\d+.*/, "").replace("+00:00", "");
+}
+
+async function render() {
+  const [system, board, social, seoSales, activity, token] = await Promise.all([
+    loadJSON("../data/system_status.json"),
+    loadJSON("../data/task_board.json"),
+    loadJSON("../data/social_status.json"),
+    loadJSON("../data/seo_sales_status.json"),
+    loadJSON("../data/activity_log.json"),
+    loadJSON("../data/token_control.json"),
+  ]);
+
+  const anyData = system || board || social || seoSales || activity || token;
+  if (!anyData) {
+    document.getElementById("staleBanner").style.display = "block";
+    document.getElementById("staleBanner").textContent =
+      "Файлы данных не найдены. Запустите: python \"" + "../.claude/hooks/dashboard_update.py" + "\" из папки SKYLINE_LOCAL, затем обновите страницу.";
+  }
+
+  const generated = (system && system.generated) || (board && board.generated) || null;
+  document.getElementById("generatedAt").textContent = generated ? "обновлено " + fmtTime(generated) + " UTC" : "нет данных";
+
+  // A. Agents
+  if (system && system.agents) {
+    const tbody = document.querySelector("#agentsTable tbody");
+    tbody.innerHTML = system.agents.map(a =>
+      `<tr><td>${a.name}</td><td>${statusBadge(a.status)}</td></tr>`).join("");
+  }
+
+  // B. Task board
+  const boardGrid = document.getElementById("boardGrid");
+  const cols = (board && board.columns) || {};
+  boardGrid.innerHTML = COLUMNS.map(col => {
+    const tasks = cols[col] || [];
+    const chips = tasks.length
+      ? tasks.map(t => `<div class="task-chip"><strong>${t.task_id || "?"}</strong><br>${t.title || "(без названия)"}<br><span style="color:var(--text-muted)">${t.agent || ""}</span></div>`).join("")
+      : `<div class="empty">пусто</div>`;
+    return `<div class="card board-col"><h3>${col} <span class="board-count">(${tasks.length})</span></h3>${chips}</div>`;
+  }).join("");
+
+  // C. Social
+  const socialBody = document.getElementById("socialBody");
+  if (social) {
+    const platforms = ["instagram","facebook","tiktok"];
+    socialBody.innerHTML = platforms.map(p => {
+      const s = social[p] || { status: "PENDING_CONNECTION" };
+      return `<div style="margin-bottom:8px"><strong style="text-transform:capitalize">${p}</strong><br>${statusBadge(s.status)}</div>`;
+    }).join("");
+  } else {
+    socialBody.innerHTML = `<div class="empty">нет данных</div>`;
+  }
+
+  // D. SEO
+  const seoBody = document.getElementById("seoBody");
+  if (seoSales && seoSales.seo) {
+    seoBody.innerHTML = `${statusBadge(seoSales.seo.status)}<p style="color:var(--text-muted);margin:8px 0 0">${seoSales.seo.note || ""}</p>`;
+  } else {
+    seoBody.innerHTML = `<div class="empty">нет данных</div>`;
+  }
+
+  // E. Sales
+  const salesBody = document.getElementById("salesBody");
+  if (seoSales && seoSales.sales) {
+    salesBody.innerHTML = `${statusBadge(seoSales.sales.status)}<p style="color:var(--text-muted);margin:8px 0 0">${seoSales.sales.note || ""}</p>`;
+  } else {
+    salesBody.innerHTML = `<div class="empty">нет данных</div>`;
+  }
+
+  // F. Consequence engine — static structure, populated by agents over time
+  const consTbody = document.querySelector("#consequenceTable tbody");
+  consTbody.innerHTML = `<tr><td colspan="8" class="empty">Рекомендаций пока нет — появятся, когда агенты предложат конкретные действия (раздел 67 спецификации). Прогнозы всегда помечаются HIGH/MEDIUM/LOW confidence.</td></tr>`;
+
+  // G. Activity log
+  const activityTbody = document.querySelector("#activityTable tbody");
+  const events = (activity && activity.recent_events) || [];
+  activityTbody.innerHTML = events.length
+    ? events.slice().reverse().map(e => `<tr><td>${fmtTime(e.timestamp)}</td><td>${e.tool_name || "—"}</td><td>${JSON.stringify(e.tool_input || {}).slice(0,140)}</td></tr>`).join("")
+    : `<tr><td colspan="3" class="empty">Событий пока нет</td></tr>`;
+
+  // H. Token control
+  const tokenGrid = document.getElementById("tokenGrid");
+  const t = token || {};
+  const tiles = [
+    ["Задач выполнено", t.tasks_executed ?? "—"],
+    ["Облачных вызовов", t.cloud_calls ?? "—"],
+    ["Веб-вызовов", t.web_calls ?? "—"],
+    ["Cache hit / miss", (t.cache_hits ?? "—") + " / " + (t.cache_misses ?? "—")],
+  ];
+  tokenGrid.innerHTML = tiles.map(([label, val]) =>
+    `<div class="card"><div class="stat">${val}</div><div class="stat-label">${label}</div></div>`).join("");
+}
+
+render();
+</script>
+</body>
+</html>

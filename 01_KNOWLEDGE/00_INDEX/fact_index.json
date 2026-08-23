@@ -1,0 +1,182 @@
+{
+  "version": "2.0",
+  "generated": "2026-08-23",
+  "facts": [
+    {
+      "fact_id": "COMP-001",
+      "value": "Юрлицо: SKYLINE ENGINEERING, S.L.",
+      "source": "https://skylineengineering.es/legal-notice",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "COMP-004",
+      "value": "NIF: B21976220",
+      "source": "https://skylineengineering.es/legal-notice",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "COMP-005",
+      "value": "Юр. адрес: Cl. Segovia, 35, Pta. 14, Esc. 3 – 03509 Finestrat (Alicante), Spain.",
+      "source": "https://skylineengineering.es/legal-notice",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "COMP-006",
+      "value": "Registro Mercantil de Alicante, hoja A-199037, EUID ES03026.000645410.",
+      "source": "https://skylineengineering.es/legal-notice",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "COMP-002",
+      "value": "Основатель: Denys Druz, Engineer · Architect.",
+      "source": "https://skylineengineering.es/about",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "COMP-008",
+      "value": "Контакты: +34 643 895 440, 780443k4@gmail.com.",
+      "source": "https://skylineengineering.es/contact",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "BRAND-001",
+      "value": "Бренд: SKYLINE ENGINEERING, S.L.",
+      "source": "https://skylineengineering.es/legal-notice",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "BRAND-002",
+      "value": "Официальное брендинговое наименование: Skyline Engineering ES / SKYLINE Engineering.",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "BRAND-003",
+      "value": "Ключевая идея: One point of contact. One coordinated process.",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "LOC-001",
+      "value": "Регион: Коста-Бланка, Испания.",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "SVC-001",
+      "value": "Услуги: Architecture · Engineering · Construction · Interiors, единая команда.",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "SVC-002",
+      "value": "9-этапный процесс: Consultation → Land Analysis → Concept → Architecture & Engineering → Licensing → Construction → Interiors → Landscape → Handover.",
+      "source": "https://skylineengineering.es/process",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "USP-002",
+      "value": "УТП: 'One point of contact. One coordinated process.'",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "USP-003",
+      "value": "4 отличия: One Responsible Team / Clear Process / Engineering Approach / Direct Communication.",
+      "source": "https://skylineengineering.es/about",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "OFFER-AURA",
+      "value": "Villa Aura: 3 спальни, 120 м² (правка пользователя, сайт пока показывает ~250 м²), от €400,000.",
+      "source": "https://skylineengineering.es/villas",
+      "source_type": "PRIMARY",
+      "status": "PROVISIONAL",
+      "confidence": "MEDIUM"
+    },
+    {
+      "fact_id": "OFFER-HORIZON",
+      "value": "Villa Horizon: 4 спальни, 140 м² (правка пользователя, сайт пока показывает ~320 м²), от €550,000.",
+      "source": "https://skylineengineering.es/villas",
+      "source_type": "PRIMARY",
+      "status": "PROVISIONAL",
+      "confidence": "MEDIUM"
+    },
+    {
+      "fact_id": "OFFER-PANORAMA",
+      "value": "Villa Panorama: 4 спальни, от 180 м² (правка пользователя, сайт пока показывает ~400 м²), от €750,000.",
+      "source": "https://skylineengineering.es/villas",
+      "source_type": "PRIMARY",
+      "status": "PROVISIONAL",
+      "confidence": "MEDIUM"
+    },
+    {
+      "fact_id": "OFFER-SIGNATURE",
+      "value": "Villa Signature: 5+ спален, 500+ м², цена по запросу.",
+      "source": "https://skylineengineering.es/villas",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "IG-001",
+      "value": "Instagram: @skyline_engineering_sl",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "FB-001",
+      "value": "Facebook: facebook.com/anteyspecstroy (имя не совпадает с брендом — уточнить актуальность)",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "MEDIUM"
+    },
+    {
+      "fact_id": "TT-001",
+      "value": "TikTok: @skyline_benidorm",
+      "source": "https://skylineengineering.es/",
+      "source_type": "PRIMARY",
+      "status": "VERIFIED",
+      "confidence": "HIGH"
+    },
+    {
+      "fact_id": "AUD-001",
+      "value": "Вероятная ЦА (инференция): состоятельные покупатели bespoke-вилл на Коста-Бланка.",
+      "source": "инференция из /villas и /about",
+      "source_type": "INFERENCE",
+      "status": "PROVISIONAL",
+      "confidence": "MEDIUM"
+    }
+  ]
+}

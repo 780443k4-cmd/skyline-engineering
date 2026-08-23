@@ -1,0 +1,79 @@
+{
+  "generated": "2026-08-23T10:56:45.837443+00:00",
+  "columns": {
+    "INBOX": [],
+    "QUEUED": [
+      {
+        "task_id": "SKY-2026-0002",
+        "title": "Подключить интеграции: сайт/CMS, Instagram/Facebook/TikTok, аналитика, CRM",
+        "agent": "SYSTEM_ADMIN",
+        "status": "QUEUED",
+        "priority": 8,
+        "created_at": "2026-08-23T08:00:00+00:00",
+        "updated_at": "2026-08-23T12:55:57+02:00",
+        "token_budget": 2000,
+        "estimated_tokens": 0,
+        "cloud_calls": 0,
+        "web_calls": 0,
+        "next_action": "Настроить безопасное SSH-подключение к VPS для кастомного Next.js-сайта и подтвердить используемые соцсети/аналитику/CRM (см. 00_SYSTEM/integrations.md)",
+        "blocker": "Нет SSH-доступа и учётных данных к внешним системам",
+        "risk": "LOW"
+      },
+      {
+        "task_id": "SKY-2026-0004",
+        "title": "Перепроверить площади вилл (Aura/Horizon/Panorama) на живом сайте после публикации правок",
+        "agent": "SEO_TECH",
+        "status": "QUEUED",
+        "priority": 5,
+        "created_at": "2026-08-23T09:30:00+00:00",
+        "updated_at": "2026-08-23T09:30:00+00:00",
+        "token_budget": 500,
+        "estimated_tokens": 0,
+        "cloud_calls": 0,
+        "web_calls": 1,
+        "next_action": "Повторно проверить https://skylineengineering.es/villas — как только площади сменятся на 120/140/180+ м², перевести факты OFFER-AURA/HORIZON/PANORAMA в 02_MARKETING/offers.md и fact_index.json из PROVISIONAL в VERIFIED",
+        "blocker": "Ждёт публикации правок на стороне пользователя (другая рабочая сессия)",
+        "risk": "LOW"
+      }
+    ],
+    "RUNNING": [],
+    "BLOCKED": [
+      {
+        "task_id": "SKY-2026-0003",
+        "title": "Технический SEO-аудит сайта Skyline Engineering ES",
+        "agent": "SEO_TECH",
+        "status": "BLOCKED",
+        "priority": 6,
+        "created_at": "2026-08-23T08:00:00+00:00",
+        "updated_at": "2026-08-23T08:00:00+00:00",
+        "token_budget": 4000,
+        "estimated_tokens": 0,
+        "cloud_calls": 0,
+        "web_calls": 0,
+        "next_action": "Ждёт подключения интеграции с сайтом/CMS (SKY-2026-0002)",
+        "blocker": "Зависит от SKY-2026-0002",
+        "risk": "LOW"
+      }
+    ],
+    "REVIEW": [
+      {
+        "task_id": "SKY-2026-0001",
+        "title": "Заполнить факты о компании в Knowledge Library (услуги, УТП, аудитория, бренд)",
+        "agent": "KNOWLEDGE_MANAGER",
+        "status": "REVIEW",
+        "priority": 8,
+        "created_at": "2026-08-23T08:00:00+00:00",
+        "updated_at": "2026-08-23T09:20:00+00:00",
+        "token_budget": 3000,
+        "estimated_tokens": 0,
+        "cloud_calls": 0,
+        "web_calls": 0,
+        "next_action": "KNOWLEDGE_MANAGER частично заполнил факты из найденного skyline-image-generation-brief-rewritten.xlsx (компания, локация, УТП, 7 концептов вилл). Нужно подтверждение пользователя + остальные факты (услуги, целевая аудитория, контакты, точный город).",
+        "blocker": null,
+        "risk": "LOW"
+      }
+    ],
+    "COMPLETED": [],
+    "FAILED": []
+  }
+}
