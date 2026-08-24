@@ -18,7 +18,7 @@ export const site = {
   },
   social: [
     { label: 'Instagram', href: 'https://www.instagram.com/skyline_engineering_sl/' },
-    { label: 'Facebook', href: 'https://www.facebook.com/anteyspecstroy/' },
+    { label: 'Facebook', href: 'https://www.facebook.com/SKYLINEBenidorm/' },
     { label: 'TikTok', href: 'https://www.tiktok.com/@skyline_benidorm' },
   ],
   nav: [
