@@ -37,7 +37,7 @@ export default function ContactChannels({ compact = false }: { compact?: boolean
               : { target: '_blank', rel: 'noopener noreferrer' })}
           >
             {channel.icon ? (
-              <img src={channel.icon} alt="" width="24" height="24" className="contact-channel-icon h-6 w-6 transition-transform duration-150 ease-out" />
+              <img src={channel.icon} alt="" width="24" height="24" loading="lazy" className="contact-channel-icon h-6 w-6 transition-transform duration-150 ease-out" />
             ) : channel.value}
           </a>
         </li>

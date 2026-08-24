@@ -83,9 +83,12 @@ const jsonLd = {
       areaServed: 'Benidorm, Alicante, Spain',
     },
     {
-      '@type': 'LocalBusiness',
+      '@type': 'GeneralContractor',
+      '@id': `${site.url}#general-contractor`,
       name: site.legal.companyName,
       url: site.url,
+      image: `${site.url}/images/og-cover.jpg`,
+      description: 'Architecture, engineering, construction and interiors for bespoke villas in Spain.',
       taxID: site.legal.nif,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -98,6 +101,7 @@ const jsonLd = {
         addressCountry: 'ES',
       },
       areaServed: 'Benidorm, Spain',
+      sameAs: site.social.map((social) => social.href),
     },
     {
       '@type': 'Service',

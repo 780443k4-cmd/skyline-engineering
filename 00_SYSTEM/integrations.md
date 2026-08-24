@@ -12,9 +12,9 @@ Privacy Policy, Cookie Policy, Legal Notice.
 
 | Система | Статус | Комментарий |
 |---|---|---|
-| Сайт skylineengineering.es | `READ_ONLY` (публично прочитан) / `PENDING_CONNECTION` (для записи/публикации) | Кастомный Next.js 16-проект (React 18, TypeScript, Tailwind CSS), деплой по SSH на VPS; production-путь `/var/www/skyline-engineering`, systemd-сервис `skyline.service`, nginx reverse proxy и SSL Let's Encrypt. Для автодеплоя/публикации нужны SSH-доступ и параметры сервера |
+| Сайт skylineengineering.es | `READ_ONLY` (публично прочитан) / `PENDING_CONNECTION` (для записи/публикации) | Кастомный Next.js 16-проект (React 18, TypeScript, Tailwind CSS), репозиторий GitHub `main`, production-деплой Vercel. Правки выполняются в локальном репозитории и публикуются через GitHub/Vercel; CMS не используется |
 | Instagram (@skyline_engineering_sl) | `PENDING_CONNECTION` | аккаунт известен (см. `01_KNOWLEDGE/07_SOCIAL/instagram.md`), API-доступ не подключён |
-| Facebook (facebook.com/anteyspecstroy) | `PENDING_CONNECTION` | ссылка на сайте не совпадает по имени с брендом SKYLINE — уточнить у пользователя актуальность |
+| Facebook (facebook.com/SKYLINEBenidorm) | `PENDING_CONNECTION` | органическая ссылка обновлена; API-доступ и публикация не подключены |
 | TikTok (@skyline_benidorm) | `PENDING_CONNECTION` | аккаунт известен, API-доступ не подключён |
 | Google Analytics / Search Console | `PENDING_CONNECTION` | нет доступа |
 | CRM | `PENDING_CONNECTION` | не определена |
@@ -25,7 +25,6 @@ Privacy Policy, Cookie Policy, Legal Notice.
 Это **не рекомендация конкретного инструмента**, а фактический список того, что существует и
 может быть подключено пользователем через настройки Claude при необходимости:
 
-- **Сайт/CMS:** WordPress.com, Webflow, Agility CMS, Netlify — если сайт Skyline на одной из
   этих платформ.
 - **SEO:** Semrush, Ahrefs, OpenRush, Similarweb.
 - **Соцсети/аналитика по нескольким платформам:** Supermetrics, Windsor.ai (агрегируют Meta/
@@ -52,7 +51,4 @@ publication").
 
 ## Следующий шаг
 
-Платформа сайта подтверждена как кастомный Next.js-проект. Осталось предоставить безопасный
-способ подключения по SSH (хост, пользователь, порт и ключ через локальную настройку/агент) и
-подтвердить, какие соцсети, аналитика и CRM реально используются; секреты не записываются в эту
-библиотеку.
+Платформа сайта подтверждена как кастомный Next.js-проект на Vercel. Для внешней публикации по-прежнему нужны официальные подключения соцсетей; секреты не записываются в эту библиотеку. Платная реклама Meta исключена из плана на неопределённый срок; продвижение — только органическими каналами.

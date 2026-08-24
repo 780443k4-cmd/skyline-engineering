@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-23T10:56:45.837443+00:00",
+  "generated": "2026-08-24T10:06:32.519975+00:00",
   "columns": {
     "INBOX": [],
     "QUEUED": [
@@ -37,43 +37,43 @@
       }
     ],
     "RUNNING": [],
-    "BLOCKED": [
-      {
-        "task_id": "SKY-2026-0003",
-        "title": "Технический SEO-аудит сайта Skyline Engineering ES",
-        "agent": "SEO_TECH",
-        "status": "BLOCKED",
-        "priority": 6,
-        "created_at": "2026-08-23T08:00:00+00:00",
-        "updated_at": "2026-08-23T08:00:00+00:00",
-        "token_budget": 4000,
-        "estimated_tokens": 0,
-        "cloud_calls": 0,
-        "web_calls": 0,
-        "next_action": "Ждёт подключения интеграции с сайтом/CMS (SKY-2026-0002)",
-        "blocker": "Зависит от SKY-2026-0002",
-        "risk": "LOW"
-      }
-    ],
+    "BLOCKED": [],
     "REVIEW": [
       {
         "task_id": "SKY-2026-0001",
         "title": "Заполнить факты о компании в Knowledge Library (услуги, УТП, аудитория, бренд)",
         "agent": "KNOWLEDGE_MANAGER",
-        "status": "REVIEW",
+        "status": "COMPLETED",
         "priority": 8,
         "created_at": "2026-08-23T08:00:00+00:00",
-        "updated_at": "2026-08-23T09:20:00+00:00",
+        "updated_at": "2026-08-23T12:00:00+00:00",
         "token_budget": 3000,
         "estimated_tokens": 0,
         "cloud_calls": 0,
         "web_calls": 0,
-        "next_action": "KNOWLEDGE_MANAGER частично заполнил факты из найденного skyline-image-generation-brief-rewritten.xlsx (компания, локация, УТП, 7 концептов вилл). Нужно подтверждение пользователя + остальные факты (услуги, целевая аудитория, контакты, точный город).",
+        "next_action": "Факты по компании, услугам, УТП, бренду и локации зафиксированы в Knowledge Library; дополнительные внешние подтверждения не требуются для текущего scope.",
         "blocker": null,
         "risk": "LOW"
       }
     ],
-    "COMPLETED": [],
+    "COMPLETED": [
+      {
+        "task_id": "SKY-2026-0003",
+        "title": "Технический SEO-аудит сайта Skyline Engineering ES",
+        "agent": "SEO_TECH",
+        "status": "COMPLETED",
+        "priority": 6,
+        "created_at": "2026-08-23T08:00:00+00:00",
+        "updated_at": "2026-08-24T00:00:00+00:00",
+        "token_budget": 4000,
+        "estimated_tokens": 1800,
+        "cloud_calls": 0,
+        "web_calls": 0,
+        "next_action": "Технический SEO-аудит выполнен; отчёт сохранён в 04_ANALYTICS/reports/2026-08-24_technical-seo-audit.md",
+        "blocker": null,
+        "risk": "LOW"
+      }
+    ],
     "FAILED": []
   }
 }

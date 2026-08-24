@@ -14,7 +14,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
   return routes.map((route) => ({
     url: `${site.url}${route}`,
-    lastModified: new Date(),
     changeFrequency: 'monthly',
     priority: route === '' ? 1 : route.includes('policy') || route.includes('legal') ? 0.3 : 0.8,
   }));
