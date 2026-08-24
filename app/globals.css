@@ -5,6 +5,9 @@
 :root {
   --font-display: 'Cormorant Garamond', serif;
   --font-sans: 'Manrope', sans-serif;
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
+  --ease-drawer: cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 html {
@@ -18,10 +21,38 @@ html {
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .motion-surface {
+    transform: none !important;
+    animation: none !important;
+  }
+
+  .motion-surface,
+  .motion-surface::before,
+  .motion-surface::after {
+    transition-duration: 200ms !important;
+  }
+}
+
+a:active,
+button:active {
+  transform: scale(0.97);
+  transition: transform 140ms var(--ease-out);
+}
+
+.motion-surface {
+  will-change: transform, opacity;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .villa-image:hover {
+    transform: scale(1.02);
+  }
+
+  .contact-channel-icon:hover {
+    transform: scale(1.04);
   }
 }
 

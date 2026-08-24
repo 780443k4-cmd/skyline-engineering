@@ -17,11 +17,11 @@ export default function FeatureGrid({
       {features.map((f, i) => (
         <motion.div
           key={f.title}
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="motion-surface bg-warmwhite p-8 md:p-10"
+          initial={{ opacity: 0, transform: 'translateY(16px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, delay: i * 0.08 }}
-          className="bg-warmwhite p-8 md:p-10"
+          transition={{ duration: 0.3, delay: i * 0.06, ease: [0.23, 1, 0.32, 1] }}
         >
           <h3 className="font-display text-2xl mb-3">{f.title}</h3>
           <p className="text-graphite/75 text-sm leading-relaxed">{f.text}</p>

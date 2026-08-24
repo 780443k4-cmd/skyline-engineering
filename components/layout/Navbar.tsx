@@ -29,7 +29,7 @@ export default function Navbar() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full border-b transition-all duration-300 ${
+      className={`sticky top-0 z-50 w-full border-b transition-[background-color,border-color,padding,backdrop-filter] duration-200 ease-out ${
         scrolled
           ? 'bg-warmwhite/95 backdrop-blur border-line py-3'
           : 'bg-warmwhite/80 backdrop-blur-sm border-transparent py-5'
@@ -111,11 +111,11 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden overflow-hidden border-t border-line bg-warmwhite"
+            initial={{ opacity: 0, transform: 'scaleY(0.97)' }}
+            animate={{ opacity: 1, transform: 'scaleY(1)' }}
+            exit={{ opacity: 0, transform: 'scaleY(0.97)' }}
+            transition={{ duration: 0.18, ease: [0.23, 1, 0.32, 1] }}
+            className="motion-surface md:hidden absolute left-0 right-0 top-full origin-top overflow-hidden border-t border-line bg-warmwhite"
           >
             <div className="container-content flex flex-col py-6 gap-5">
               {nav.map((item) => (

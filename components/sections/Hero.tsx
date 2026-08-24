@@ -22,9 +22,10 @@ export default function Hero() {
 
       <div className="relative z-10 h-full container-content flex flex-col justify-end pb-20 md:pb-28">
         <motion.div
+          className="motion-surface"
           initial={{ opacity: 0, scale: 1.03 }}
           animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 1.1, ease: 'easeOut' }}
+          transition={{ duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
         >
           <div className="eyebrow text-champagne mb-6">{t.common.region}</div>
           <h1 className="font-display text-warmwhite text-6xl md:text-8xl leading-[0.95] tracking-tight">

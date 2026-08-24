@@ -24,13 +24,13 @@ export default function SectionHeading({
         <div className={`eyebrow mb-4 ${dark ? 'text-champagne' : ''}`}>{eyebrow}</div>
       )}
       <motion.h2
-        initial={{ opacity: 0, y: 16 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: '-80px' }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className={`font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] ${
+        className={`motion-surface font-display text-4xl md:text-5xl lg:text-6xl leading-[1.05] ${
           dark ? 'text-warmwhite' : 'text-ink'
         }`}
+        initial={{ opacity: 0, transform: 'translateY(16px)' }}
+        whileInView={{ opacity: 1, transform: 'translateY(0)' }}
+        viewport={{ once: true, margin: '-80px' }}
+        transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
       >
         {title}
       </motion.h2>

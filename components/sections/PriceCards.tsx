@@ -10,11 +10,11 @@ export default function PriceCards() {
       {t.prices.map((tier: {name:string;price:string;features:string[]}, i:number) => (
         <motion.div
           key={tier.name}
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          className="motion-surface border border-line p-8 flex flex-col"
+          initial={{ opacity: 0, transform: 'translateY(20px)' }}
+          whileInView={{ opacity: 1, transform: 'translateY(0)' }}
           viewport={{ once: true, margin: '-60px' }}
-          transition={{ duration: 0.5, delay: i * 0.1 }}
-          className="border border-line p-8 flex flex-col"
+          transition={{ duration: 0.3, delay: i * 0.06, ease: [0.23, 1, 0.32, 1] }}
         >
           <div className="eyebrow mb-3">{tier.name}</div>
           <div className="font-display text-3xl mb-6">{tier.price}</div>

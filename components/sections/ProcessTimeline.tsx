@@ -12,11 +12,11 @@ export default function ProcessTimeline({ stages }: { stages: Stage[] }) {
         {stages.map((stage, i) => (
           <motion.div
             key={stage.number}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            className="motion-surface relative"
+            initial={{ opacity: 0, transform: 'translateY(20px)' }}
+            whileInView={{ opacity: 1, transform: 'translateY(0)' }}
             viewport={{ once: true, margin: '-60px' }}
-            transition={{ duration: 0.5, delay: i * 0.06 }}
-            className="relative"
+            transition={{ duration: 0.3, delay: i * 0.05, ease: [0.23, 1, 0.32, 1] }}
           >
             <div className="relative z-10 w-3 h-3 rounded-full bg-skyline mb-5" />
             <div className="font-display text-xl text-skyline mb-1">{stage.number}</div>
@@ -29,6 +29,6 @@ export default function ProcessTimeline({ stages }: { stages: Stage[] }) {
           </motion.div>
         ))}
       </div>
-    </div>
+      </div>
   );
-}
+    }

@@ -8,12 +8,12 @@ export default function ResponsibilityChain() {
   return (
     <div className="mt-14 flex flex-col items-center">
       {t.chain.map((step: string, i: number) => (
-        <motion.div key={step} className="flex flex-col items-center">
+          <motion.div key={step} className="motion-surface flex flex-col items-center">
           <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, transform: 'translateY(12px)' }}
+              whileInView={{ opacity: 1, transform: 'translateY(0)' }}
             viewport={{ once: true, margin: '-40px' }}
-            transition={{ duration: 0.4, delay: i * 0.06 }}
+              transition={{ duration: 0.3, delay: i * 0.05, ease: [0.23, 1, 0.32, 1] }}
             className={`font-display text-2xl md:text-3xl px-8 py-3 border ${
               i === t.chain.length - 1
                 ? 'border-skyline text-skyline'
