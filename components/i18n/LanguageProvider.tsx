@@ -1,11 +1,13 @@
 'use client';
 
-import { createContext, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useContext, useEffect, useMemo } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import { dictionaries, type Locale } from '@/data/translations';
 
 type LanguageContextValue = {
   locale: Locale;
   setLocale: (locale: Locale) => void;
+  localizePath: (path: string) => string;
   t: (typeof dictionaries)[Locale];
 };
 
@@ -18,20 +20,17 @@ export const languages: { code: Locale; short: string; label: string }[] = [
   { code: 'es', short: 'ES', label: 'Español' },
 ];
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [locale, setLocaleState] = useState<Locale>('uk');
+export function LanguageProvider({ children, initialLocale }: { children: React.ReactNode; initialLocale: Locale }) {
+  const locale = initialLocale;
+  const pathname = usePathname();
+  const router = useRouter();
 
-  useEffect(() => {
-    const saved = window.localStorage.getItem('skyline-language');
-    if (saved === 'uk' || saved === 'ru' || saved === 'en' || saved === 'es') {
-      setLocaleState(saved);
-    }
-  }, []);
+  const localizePath = (path: string) => path === '/' ? `/${locale}` : `/${locale}${path}`;
 
   const setLocale = (next: Locale) => {
-    setLocaleState(next);
     window.localStorage.setItem('skyline-language', next);
-    document.documentElement.lang = next;
+    const rest = pathname.replace(/^\/(uk|ru|en|es)(?=\/|$)/, '') || '/';
+    router.push(rest === '/' ? `/${next}` : `/${next}${rest}`);
   };
 
   useEffect(() => {
@@ -39,8 +38,8 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
   }, [locale]);
 
   const value = useMemo(
-    () => ({ locale, setLocale, t: dictionaries[locale] }),
-    [locale]
+    () => ({ locale, setLocale, localizePath, t: dictionaries[locale] }),
+    [locale, pathname]
   );
 
   return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;

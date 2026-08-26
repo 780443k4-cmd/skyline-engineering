@@ -1,11 +1,13 @@
-import type { Metadata } from 'next';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
-import './globals.css';
+import '../globals.css';
+import { notFound } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import WhatsAppButton from '@/components/ui/WhatsAppButton';
 import { site } from '@/data/site';
 import { LanguageProvider } from '@/components/i18n/LanguageProvider';
+import GoogleAnalytics from '@/components/analytics/GoogleAnalytics';
+import { isLocale, locales } from '@/data/seo';
 
 const display = Cormorant_Garamond({
   subsets: ['latin', 'cyrillic'],
@@ -20,47 +22,6 @@ const sans = Manrope({
   variable: '--font-sans',
   display: 'swap',
 });
-
-export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
-  title: {
-    default: 'SKYLINE Engineering | Вілли під ключ в Іспанії від €400 000',
-    template: '%s | SKYLINE Engineering',
-  },
-  description:
-    'Вілли під ключ у Бенідормі: від вибору ділянки й архітектури до дозволів, будівництва, дизайну та передачі ключів.',
-  alternates: {
-    canonical: '/',
-  },
-  openGraph: {
-    title: 'SKYLINE Engineering | Вілли під ключ в Іспанії',
-    description:
-      'Від ділянки до ключів: архітектура, інженерія, будівництво та дизайн вілл у Бенідормі.',
-    url: site.url,
-    siteName: 'SKYLINE Engineering',
-    locale: 'uk_UA',
-    type: 'website',
-    images: [
-      {
-        url: '/images/og-cover.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Концепція сучасної вілли SKYLINE з видом на Середземне море',
-      },
-    ],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'SKYLINE Engineering | Вілли під ключ в Іспанії',
-    description:
-      'Від ділянки до ключів: архітектура, інженерія, будівництво та дизайн вілл у Бенідормі.',
-    images: ['/images/og-cover.jpg'],
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -80,7 +41,7 @@ const jsonLd = {
         addressRegion: 'Alicante',
         addressCountry: 'ES',
       },
-      areaServed: 'Benidorm, Alicante, Spain',
+      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
     },
     {
       '@type': 'GeneralContractor',
@@ -100,7 +61,7 @@ const jsonLd = {
         addressRegion: 'Alicante',
         addressCountry: 'ES',
       },
-      areaServed: 'Benidorm, Spain',
+      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
       sameAs: site.social.map((social) => social.href),
     },
     {
@@ -117,19 +78,26 @@ const jsonLd = {
   ],
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function RootLayout({ children, params }: { children: React.ReactNode; params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
   return (
-    <html lang="uk" className={`${display.variable} ${sans.variable}`}>
+    <html lang={locale} className={`${display.variable} ${sans.variable}`}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
-        <LanguageProvider>
+        <LanguageProvider initialLocale={locale}>
           <Navbar />
           <main className="pb-16 md:pb-0">{children}</main>
           <Footer />
           <WhatsAppButton />
+          <GoogleAnalytics />
         </LanguageProvider>
       </body>
     </html>

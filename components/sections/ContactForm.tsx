@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { trackEvent } from '@/lib/analytics';
 
 const budgetOptions = ['€400–600K', '€600–900K', '€900K–1.5M', '€1.5M+'];
 
@@ -33,6 +34,7 @@ export default function ContactForm() {
       }
 
       setStatus('success');
+      trackEvent('generate_lead', { form_name: 'villa_consultation', locale });
       form.reset();
     } catch (err) {
       setStatus('error');

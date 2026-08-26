@@ -2,11 +2,13 @@
 
 import { phoneHref, site, telegramHref, viberHref, whatsappHref } from '@/data/site';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { trackEvent } from '@/lib/analytics';
 
 type Channel = {
   label: string;
   value: string;
   href: string;
+  eventName: string;
   direct?: boolean;
   icon?: string;
 };
@@ -14,11 +16,11 @@ type Channel = {
 export default function ContactChannels({ compact = false }: { compact?: boolean }) {
   const { t } = useLanguage();
   const channels: Channel[] = [
-    { label: t.common.phone, value: site.phoneDisplay, href: phoneHref(), direct: true },
-    { label: 'WhatsApp', value: t.common.messageUs, href: whatsappHref(t.common.waMessage), icon: 'https://cdn.simpleicons.org/whatsapp/25D366' },
-    { label: 'Telegram', value: t.common.messageUs, href: telegramHref(t.common.waMessage), icon: 'https://cdn.simpleicons.org/telegram/26A5E4' },
-    { label: 'Viber', value: t.common.messageUs, href: viberHref(), icon: 'https://cdn.simpleicons.org/viber/7360F2' },
-    { label: t.common.email, value: site.email, href: `mailto:${site.email}`, direct: true },
+    { label: t.common.phone, value: site.phoneDisplay, href: phoneHref(), eventName: 'phone_click', direct: true },
+    { label: 'WhatsApp', value: t.common.messageUs, href: whatsappHref(t.common.waMessage), eventName: 'whatsapp_click', icon: 'https://cdn.simpleicons.org/whatsapp/25D366' },
+    { label: 'Telegram', value: t.common.messageUs, href: telegramHref(t.common.waMessage), eventName: 'telegram_click', icon: 'https://cdn.simpleicons.org/telegram/26A5E4' },
+    { label: 'Viber', value: t.common.messageUs, href: viberHref(), eventName: 'viber_click', icon: 'https://cdn.simpleicons.org/viber/7360F2' },
+    { label: t.common.email, value: site.email, href: `mailto:${site.email}`, eventName: 'email_click', direct: true },
   ];
   return (
     <ul className={compact ? 'space-y-2 text-sm' : 'space-y-4 text-sm'}>
@@ -30,6 +32,7 @@ export default function ContactChannels({ compact = false }: { compact?: boolean
           <span className="text-graphite/50">{channel.label}</span>
           <a
             href={channel.href}
+            onClick={() => trackEvent(channel.eventName, { location: compact ? 'footer' : 'contact_page' })}
             aria-label={channel.icon ? `${channel.label}: ${channel.value}` : undefined}
             className="inline-flex min-h-6 items-center hover:text-skyline transition-colors underline-offset-4 hover:underline"
             {...(channel.direct

@@ -4,7 +4,7 @@ export const site = {
   tagline: 'Bespoke villas in Spain.',
   region: 'Benidorm · Spain',
   startingPrice: '€400,000',
-  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://skylineengineering.es',
+  url: process.env.NEXT_PUBLIC_SITE_URL || 'https://www.skylineengineering.es',
   phoneNumber: '34643895440',
   phoneDisplay: '+34 643 895 440',
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '34643895440',

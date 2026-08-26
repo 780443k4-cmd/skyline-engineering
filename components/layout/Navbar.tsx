@@ -10,7 +10,7 @@ import { languages, useLanguage } from '@/components/i18n/LanguageProvider';
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const { locale, setLocale, t } = useLanguage();
+  const { locale, setLocale, localizePath, t } = useLanguage();
   const nav = site.nav.map((item, index) => ({ ...item, label: t.common.nav[index] }));
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export default function Navbar() {
     >
       <div className="container-content flex items-center justify-between">
         <Link
-          href="/"
+          href={localizePath('/')}
           className="flex items-center gap-2.5 font-display text-xl md:text-2xl tracking-wide"
         >
           <Image
@@ -56,7 +56,7 @@ export default function Navbar() {
           {nav.map((item) => (
             <Link
               key={item.href}
-              href={item.href}
+              href={localizePath(item.href)}
               className="text-graphite hover:text-skyline transition-colors"
             >
               {item.label}
@@ -66,7 +66,7 @@ export default function Navbar() {
 
         <div className="hidden md:flex items-center gap-4">
           <Link
-            href="/contact"
+            href={localizePath('/contact')}
             className="inline-block border border-ink px-5 py-2.5 text-xs tracking-widest2 uppercase hover:bg-ink hover:text-warmwhite transition-colors"
           >
             {t.common.start}
@@ -121,7 +121,7 @@ export default function Navbar() {
               {nav.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
+                  href={localizePath(item.href)}
                   onClick={() => setMenuOpen(false)}
                   className="font-display text-2xl"
                 >
@@ -129,7 +129,7 @@ export default function Navbar() {
                 </Link>
               ))}
               <Link
-                href="/contact"
+                href={localizePath('/contact')}
                 onClick={() => setMenuOpen(false)}
                 className="mt-2 border border-ink px-5 py-3 text-center text-xs tracking-widest2 uppercase"
               >

@@ -5,9 +5,10 @@ import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { site } from '@/data/site';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { trackEvent } from '@/lib/analytics';
 
 export default function Hero() {
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
   return (
     <section className="relative h-[92vh] min-h-[640px] w-full overflow-hidden bg-ink">
       <Image
@@ -42,13 +43,15 @@ export default function Hero() {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-4">
             <Link
-              href="/contact"
+              href={localizePath('/contact')}
+              onClick={() => trackEvent('cta_click', { location: 'hero', destination: 'contact' })}
               className="bg-skyline hover:bg-skyline-light transition-colors text-warmwhite px-8 py-4 text-xs tracking-widest2 uppercase text-center"
             >
               {t.hero.discuss}
             </Link>
             <Link
-              href="/villas"
+              href={localizePath('/villas')}
+              onClick={() => trackEvent('cta_click', { location: 'hero', destination: 'villas' })}
               className="border border-warmwhite/70 text-warmwhite px-8 py-4 text-xs tracking-widest2 uppercase text-center hover:bg-warmwhite hover:text-ink transition-colors"
             >
               {t.hero.explore}

@@ -6,7 +6,7 @@ import { site } from '@/data/site';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
   const nav = site.nav.map((item, index) => ({ ...item, label: t.common.nav[index] }));
   return (
     <footer className="border-t border-line bg-warmwhite">
@@ -21,7 +21,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             {nav.map((item) => (
               <li key={item.href}>
-                <Link href={item.href} className="hover:text-skyline transition-colors">
+                <Link href={localizePath(item.href)} className="hover:text-skyline transition-colors">
                   {item.label}
                 </Link>
               </li>
@@ -39,17 +39,17 @@ export default function Footer() {
           <div className="eyebrow mb-4">{t.common.legal}</div>
           <ul className="space-y-2 text-sm text-graphite/70">
             <li>
-              <Link href="/privacy-policy" className="hover:text-skyline transition-colors">
+              <Link href={localizePath('/privacy-policy')} className="hover:text-skyline transition-colors">
                 {t.common.privacy}
               </Link>
             </li>
             <li>
-              <Link href="/cookie-policy" className="hover:text-skyline transition-colors">
+              <Link href={localizePath('/cookie-policy')} className="hover:text-skyline transition-colors">
                 {t.common.cookies}
               </Link>
             </li>
             <li>
-              <Link href="/legal-notice" className="hover:text-skyline transition-colors">
+              <Link href={localizePath('/legal-notice')} className="hover:text-skyline transition-colors">
                 {t.common.notice}
               </Link>
             </li>

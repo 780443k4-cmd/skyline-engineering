@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 
 export default function NotFound() {
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
   return (
     <div className="h-[70vh] flex flex-col items-center justify-center text-center px-6">
       <div className="eyebrow mb-6">404</div>
@@ -13,7 +13,7 @@ export default function NotFound() {
         {t.common.pageMissingText}
       </p>
       <Link
-        href="/"
+        href={localizePath('/')}
         className="border border-ink px-8 py-4 text-xs tracking-widest2 uppercase hover:bg-ink hover:text-warmwhite transition-colors"
       >
         {t.common.backHome}

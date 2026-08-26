@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { isWhatsAppConfigured, whatsappHref } from '@/data/site';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
+import { trackEvent } from '@/lib/analytics';
 
 export default function CTASection({
   eyebrow,
@@ -13,7 +14,7 @@ export default function CTASection({
   title: React.ReactNode;
   text?: string;
 }) {
-  const { t } = useLanguage();
+  const { localizePath, t } = useLanguage();
   return (
     <section id="contact-cta" className="bg-ink text-warmwhite">
       <div className="container-content py-24 md:py-32 text-center">
@@ -28,13 +29,15 @@ export default function CTASection({
         )}
         <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
-            href="/contact"
+            href={localizePath('/contact')}
+            onClick={() => trackEvent('cta_click', { location: 'footer_cta', destination: 'contact' })}
             className="border border-warmwhite px-8 py-4 text-xs tracking-widest2 uppercase hover:bg-warmwhite hover:text-ink transition-colors"
           >
             {t.common.ctaButton}
           </Link>
           <a
             href={whatsappHref(t.common.waMessage)}
+            onClick={() => trackEvent('whatsapp_click', { location: 'footer_cta' })}
             {...(isWhatsAppConfigured
               ? { target: '_blank', rel: 'noopener noreferrer' }
               : {})}
