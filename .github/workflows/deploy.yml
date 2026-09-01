@@ -1,0 +1,28 @@
+name: Deploy to Hetzner
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.HETZNER_SSH_HOST }}
+          username: ${{ secrets.HETZNER_SSH_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          script: |
+            set -e
+            cd /var/www/skyline-engineering
+            sudo git fetch origin main
+            sudo git reset --hard origin/main
+            sudo npm ci
+            sudo npm run build
+            sudo chown -R www-data:www-data /var/www/skyline-engineering
+            sudo systemctl restart skyline
+            sleep 2
+            sudo systemctl --no-pager --full status skyline | head -5
