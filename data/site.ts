@@ -26,6 +26,7 @@ export const site = {
     { label: 'Process', href: '/process' },
     { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
+    { label: 'FAQ', href: '/faq' },
   ],
   locations: [
     'Altea',

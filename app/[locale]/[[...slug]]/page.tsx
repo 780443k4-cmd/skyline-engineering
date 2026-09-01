@@ -8,6 +8,7 @@ import ContactPage from '@/components/pages/ContactPage';
 import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
 import CookiePolicyPage from '@/components/pages/CookiePolicyPage';
 import LegalNoticePage from '@/components/pages/LegalNoticePage';
+import FaqPage from '@/components/pages/FaqPage';
 import { buildMetadata, isLocale, isPagePath, type PagePath } from '@/data/seo';
 
 type Props = {
@@ -41,6 +42,7 @@ export default async function LocalizedPage({ params }: Props) {
     '/privacy-policy': PrivacyPolicyPage,
     '/cookie-policy': CookiePolicyPage,
     '/legal-notice': LegalNoticePage,
+    '/faq': FaqPage,
   };
   const Page = pages[path];
   return <Page />;
