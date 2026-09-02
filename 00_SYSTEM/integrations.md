@@ -4,6 +4,18 @@
 изобретать API/учётные данные (раздел «NEVER INVENT») — поэтому ниже только то, что
 реально обнаружено или реально доступно для подключения.
 
+## ⚠️ Деплой сайта — читать перед любой работой с инфраструктурой
+
+**Хостинг — Vercel, не Hetzner.** До 2026-09-01 использовался ручной SSH-деплой на
+сервер Hetzner (`167.233.221.39`); это полностью заброшено при переходе на Vercel.
+Vercel подключён к GitHub-репозиторию и деплоит каждый `git push` в `main`
+автоматически — сборка занимает 1-3 минуты, вмешательство не требуется.
+
+Если сайт не обновился после пуша — проблема в Vercel (смотреть его дашборд/логи
+сборки), а не в SSH/Hetzner. **Не создавать заново `.github/workflows/deploy.yml`
+с деплоем на Hetzner, не искать/не чинить секреты `HETZNER_SSH_*`.** 2026-09-01
+на это было потрачено больше часа впустую — не повторять.
+
 ## Обнаружено в текущей среде
 
 Сайт найден и прочитан (публичные страницы, без авторизации): **https://skylineengineering.es/**
@@ -12,7 +24,7 @@ Privacy Policy, Cookie Policy, Legal Notice.
 
 | Система | Статус | Комментарий |
 |---|---|---|
-| Сайт skylineengineering.es | `READ_ONLY` (публично прочитан) / `PENDING_CONNECTION` (для записи/публикации) | Кастомный Next.js 16-проект (React 18, TypeScript, Tailwind CSS), репозиторий GitHub `main`, production-деплой Vercel. Правки выполняются в локальном репозитории и публикуются через GitHub/Vercel; CMS не используется |
+| Сайт skylineengineering.es | `CONNECTED` (деплой автоматический) | Кастомный Next.js 16-проект (React 18, TypeScript, Tailwind CSS). Хостинг — **Vercel**, подключён напрямую к GitHub-репозиторию `780443k4-cmd/skyline-engineering`. Любой `git push` в `main` деплоится сам, без SSH и без секретов. Подробности: `DEPLOY_INSTRUCTIONS.md`. CMS не используется |
 | Instagram (@skyline_engineering_sl) | `PENDING_CONNECTION` | аккаунт известен (см. `01_KNOWLEDGE/07_SOCIAL/instagram.md`), API-доступ не подключён |
 | Facebook (facebook.com/SKYLINEBenidorm) | `PENDING_CONNECTION` | органическая ссылка обновлена; API-доступ и публикация не подключены |
 | TikTok (@skyline_benidorm) | `PENDING_CONNECTION` | аккаунт известен, API-доступ не подключён |

@@ -31,8 +31,6 @@ data/
   process.ts  Process stage copy
 public/
   images/     Replace placeholder folders with real assets (see checklist)
-deploy/
-  nginx.conf  Reverse proxy config for Hetzner + Cloudflare
 ```
 
 ## 2. Local development
@@ -69,27 +67,15 @@ npm run start   # runs `next start` on port 3000
 
 Do not use `next dev` in production.
 
-## 5. Deployment to Hetzner behind Nginx + Cloudflare
+## 5. Deployment (Vercel)
 
-**Architecture:** Internet → Cloudflare → Nginx → Next.js (Node.js)
+Production hosting is **Vercel**, connected directly to this GitHub repository.
+Every push to `main` is built and deployed automatically — no server, no SSH,
+no manual steps. Check deploy status on vercel.com or this repo's
+**Deployments** tab. See `DEPLOY_INSTRUCTIONS.md` for details.
 
-1. Provision a Hetzner VPS (Ubuntu 22.04/24.04 recommended).
-2. Install Node.js 20 LTS, Nginx, and a process manager (e.g. `pm2` or a
-   systemd service) to keep `next start` running and restart on crash/boot.
-3. Clone the repo, `npm install --omit=dev` is not sufficient since the build
-   needs devDependencies — run `npm install`, then `npm run build`.
-4. Start the app: `pm2 start npm --name skyline -- start` (or a systemd unit
-   running `npm run start` in the project directory with `.env.local` loaded).
-5. Copy `deploy/nginx.conf` to `/etc/nginx/sites-available/`, symlink into
-   `sites-enabled/`, update `server_name`, then `nginx -t && systemctl reload nginx`.
-6. Point your domain's DNS to Cloudflare, then Cloudflare to your Hetzner IP
-   (orange-cloud proxied).
-7. In Cloudflare: set SSL/TLS mode to **Full (strict)** and install a
-   Cloudflare Origin CA certificate on the server (referenced in
-   `deploy/nginx.conf`). Enable "Always Use HTTPS", enable WAF/bot protection,
-   and add a rate-limiting rule for `/api/contact`.
-8. Verify: HTTPS loads, all 5 pages render, contact form submits successfully,
-   WhatsApp button opens WhatsApp with the correct number.
+An earlier Hetzner + Nginx + Cloudflare setup was used before 2026-09-01 and
+has been fully retired — do not resurrect it.
 
 ## 6. Replacing placeholder images/text (checklist)
 
