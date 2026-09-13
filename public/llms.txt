@@ -1,0 +1,16 @@
+# SKYLINE Engineering
+
+> Architecture, engineering, construction and interiors for bespoke villas across the Costa Blanca (Benidorm and surrounding area), Spain. One point of contact, one coordinated process — from land analysis to handover.
+
+SKYLINE ENGINEERING, S.L. designs and builds turnkey villas based in Benidorm, serving the surrounding Costa Blanca area (Altea, Altea Hills, Finestrat, La Nucía, Polop, Calpe, Benissa, Moraira, Jávea). Founded and led by Denys Druz (Architect · Civil Engineer, 25+ years of experience in construction and engineering design).
+
+## Pages
+
+- [Home](https://www.skylineengineering.es/en): overview of services and the coordinated design-and-build process
+- [Villas](https://www.skylineengineering.es/en/villas): villa concepts with indicative specifications and budgets
+- [Process](https://www.skylineengineering.es/en/process): the step-by-step process from land analysis to handover
+- [About](https://www.skylineengineering.es/en/about): the team and engineering-led approach
+- [FAQ](https://www.skylineengineering.es/en/faq): common questions about services, process, budget and timelines
+- [Contact](https://www.skylineengineering.es/en/contact): get in touch about a plot or project
+
+Other languages: replace `/en/` with `/es/`, `/ru/` or `/uk/` in the URLs above for the Spanish, Russian and Ukrainian versions of the same pages.

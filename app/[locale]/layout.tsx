@@ -23,33 +23,28 @@ const sans = Manrope({
   display: 'swap',
 });
 
+const organizationId = `${site.url}#organization`;
+const founderId = `${site.url}#founder-denys-druz`;
+const websiteId = `${site.url}#website`;
+
+// Single canonical business entity (GeneralContractor is a more specific subtype of
+// Organization/LocalBusiness) referenced by @id everywhere else, instead of two separate
+// top-level nodes describing the same real-world entity. All values below are sourced from
+// already-published, owner-confirmed facts (site.ts / legal notice / about page) — no new
+// portfolio content is introduced here.
 const jsonLd = {
   '@context': 'https://schema.org',
   '@graph': [
     {
-      '@type': 'Organization',
-      name: site.legal.companyName,
-      url: site.url,
-      taxID: site.legal.nif,
-      email: site.email,
-      telephone: site.phoneDisplay,
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: 'Cl. Segovia, 35, Pta. 14, Esc. 3',
-        postalCode: '03509',
-        addressLocality: 'Finestrat',
-        addressRegion: 'Alicante',
-        addressCountry: 'ES',
-      },
-      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
-    },
-    {
       '@type': 'GeneralContractor',
-      '@id': `${site.url}#general-contractor`,
+      '@id': organizationId,
       name: site.legal.companyName,
+      alternateName: site.shortName,
       url: site.url,
+      logo: `${site.url}/images/logo/skyline-logo-full.png`,
       image: `${site.url}/images/og-cover.jpg`,
-      description: 'Architecture, engineering, construction and interiors for bespoke villas in Spain.',
+      description:
+        'Architecture, engineering, construction and interiors for bespoke villas across the Costa Blanca (Benidorm and surrounding area), Spain.',
       taxID: site.legal.nif,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -63,17 +58,30 @@ const jsonLd = {
       },
       areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
       sameAs: site.social.map((social) => social.href),
+      founder: { '@id': founderId },
+    },
+    {
+      '@type': 'Person',
+      '@id': founderId,
+      name: 'Denys Druz',
+      jobTitle: 'Architect · Civil Engineer',
+      image: `${site.url}/images/team/denys-druz.jpg`,
+      description:
+        'Architect and civil engineer with 25+ years of experience in construction and engineering design; founder of SKYLINE Engineering.',
+      worksFor: { '@id': organizationId },
     },
     {
       '@type': 'Service',
       serviceType: 'Turnkey villa design and construction',
-      provider: { '@type': 'Organization', name: site.legal.companyName },
-      areaServed: 'Benidorm, Spain',
+      provider: { '@id': organizationId },
+      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
     },
     {
       '@type': 'WebSite',
+      '@id': websiteId,
       name: 'SKYLINE Engineering',
       url: site.url,
+      publisher: { '@id': organizationId },
     },
   ],
 };
