@@ -11,12 +11,24 @@ export const pagePaths = [
   '/about',
   '/contact',
   '/faq',
+  '/villa-construction-finestrat',
+  '/villa-construction-benidorm',
+  '/villa-construction-costa-blanca',
+  '/projects',
   '/privacy-policy',
   '/cookie-policy',
   '/legal-notice',
 ] as const;
 
 export type PagePath = (typeof pagePaths)[number];
+
+export const locationPaths = {
+  finestrat: '/villa-construction-finestrat',
+  benidorm: '/villa-construction-benidorm',
+  costaBlanca: '/villa-construction-costa-blanca',
+} as const satisfies Record<string, PagePath>;
+
+export type LocationKey = keyof typeof locationPaths;
 
 const content: Record<Locale, Record<PagePath, { title: string; description: string }>> = {
   uk: {
@@ -26,6 +38,10 @@ const content: Record<Locale, Record<PagePath, { title: string; description: str
     '/about': { title: 'Про SKYLINE Engineering | Будівництво вілл в Іспанії', description: 'Команда SKYLINE Engineering та інженерний підхід до проєктування й будівництва приватних вілл на Коста-Бланці.' },
     '/contact': { title: 'Обговорити будівництво вілли | SKYLINE Engineering', description: 'Зв’яжіться з SKYLINE Engineering, щоб обговорити ділянку, проєкт, бюджет або ідею вілли на Коста-Бланці.' },
     '/faq': { title: 'Часті запитання про будівництво вілли | SKYLINE Engineering', description: 'Відповіді на запитання про послуги, процес, терміни, бюджет і гарантії SKYLINE Engineering.' },
+    '/villa-construction-finestrat': { title: 'Будівництво вілл у Фінестраті | SKYLINE Engineering', description: 'Будівництво вілл під ключ у Фінестраті (Аліканте): архітектура, інженерія, дозвіл на будівництво та зведення об’єкта — одна команда, що працює на місці у Фінестраті.' },
+    '/villa-construction-benidorm': { title: 'Будівництво вілл у Бенідормі | SKYLINE Engineering', description: 'Будівництво вілл під ключ у Бенідормі: ділянка, архітектура, дозволи, будівництво та здача об’єкта — координує SKYLINE Engineering, база в сусідньому Фінестраті.' },
+    '/villa-construction-costa-blanca': { title: 'Будівництво вілл на Коста-Бланці | SKYLINE Engineering', description: 'Будівництво вілл під ключ по всій Коста-Бланці — Бенідорм, Фінестрат, Альтеа, Кальпе та Хавея — силами однієї інженерної команди.' },
+    '/projects': { title: 'Проєкти SKYLINE Engineering | Будівництво вілл', description: 'Реальні проєкти SKYLINE Engineering у Бенідормі, Фінестраті та на Коста-Бланці — з фактичними даними про ділянку, площу, статус і надані послуги.' },
     '/privacy-policy': { title: 'Політика конфіденційності | SKYLINE Engineering', description: 'Інформація про обробку та захист персональних даних на сайті SKYLINE Engineering.' },
     '/cookie-policy': { title: 'Політика cookie | SKYLINE Engineering', description: 'Інформація про необхідні та аналітичні технології на сайті SKYLINE Engineering.' },
     '/legal-notice': { title: 'Правова інформація | SKYLINE Engineering', description: 'Юридичні відомості про SKYLINE ENGINEERING, S.L. та умови використання сайту.' },
@@ -37,6 +53,10 @@ const content: Record<Locale, Record<PagePath, { title: string; description: str
     '/about': { title: 'О SKYLINE Engineering | Строительство вилл в Испании', description: 'Команда SKYLINE Engineering и инженерный подход к проектированию и строительству частных вилл на Коста-Бланке.' },
     '/contact': { title: 'Обсудить строительство виллы | SKYLINE Engineering', description: 'Свяжитесь с SKYLINE Engineering, чтобы обсудить участок, проект, бюджет или идею виллы на Коста-Бланке.' },
     '/faq': { title: 'Часто задаваемые вопросы о строительстве виллы | SKYLINE Engineering', description: 'Ответы на вопросы об услугах, процессе, сроках, бюджете и гарантиях SKYLINE Engineering.' },
+    '/villa-construction-finestrat': { title: 'Строительство вилл в Финестрате | SKYLINE Engineering', description: 'Строительство вилл под ключ в Финестрате (Аликанте): архитектура, инженерия, разрешение на строительство и возведение объекта — одна команда, работающая на месте в Финестрате.' },
+    '/villa-construction-benidorm': { title: 'Строительство вилл в Бенидорме | SKYLINE Engineering', description: 'Строительство вилл под ключ в Бенидорме: участок, архитектура, разрешения, строительство и сдача объекта — координирует SKYLINE Engineering, база в соседнем Финестрате.' },
+    '/villa-construction-costa-blanca': { title: 'Строительство вилл на Коста-Бланке | SKYLINE Engineering', description: 'Строительство вилл под ключ по всей Коста-Бланке — Бенидорм, Финестрат, Альтеа, Кальпе и Хавея — силами одной инженерной команды.' },
+    '/projects': { title: 'Проекты SKYLINE Engineering | Строительство вилл', description: 'Реальные проекты SKYLINE Engineering в Бенидорме, Финестрате и на Коста-Бланке — с фактическими данными об участке, площади, статусе и оказанных услугах.' },
     '/privacy-policy': { title: 'Политика конфиденциальности | SKYLINE Engineering', description: 'Информация об обработке и защите персональных данных на сайте SKYLINE Engineering.' },
     '/cookie-policy': { title: 'Политика cookie | SKYLINE Engineering', description: 'Информация о необходимых и аналитических технологиях на сайте SKYLINE Engineering.' },
     '/legal-notice': { title: 'Правовая информация | SKYLINE Engineering', description: 'Юридические сведения о SKYLINE ENGINEERING, S.L. и условия использования сайта.' },
@@ -48,6 +68,10 @@ const content: Record<Locale, Record<PagePath, { title: string; description: str
     '/about': { title: 'About SKYLINE Engineering | Villa Builder Costa Blanca', description: 'Meet the engineering-led team designing and building bespoke private villas in Benidorm and across Costa Blanca.' },
     '/contact': { title: 'Discuss Your Costa Blanca Villa | SKYLINE Engineering', description: 'Contact SKYLINE Engineering to discuss your plot, project, budget or idea for a turnkey villa in Costa Blanca.' },
     '/faq': { title: 'Villa Construction FAQ | SKYLINE Engineering', description: 'Answers about SKYLINE Engineering’s services, process, timelines, budget and warranty for building a villa in Spain.' },
+    '/villa-construction-finestrat': { title: 'Villa Construction Finestrat | SKYLINE Engineering', description: 'Turnkey villa construction in Finestrat, Alicante: architecture, engineering, building licence and construction managed by one team based locally in Finestrat.' },
+    '/villa-construction-benidorm': { title: 'Villa Construction Benidorm | SKYLINE Engineering', description: 'Turnkey villa construction in Benidorm: land review, architecture, permits, construction and handover coordinated by SKYLINE Engineering, based nearby in Finestrat.' },
+    '/villa-construction-costa-blanca': { title: 'Villa Construction Costa Blanca | SKYLINE Engineering', description: 'Turnkey villa construction across the Costa Blanca — Benidorm, Finestrat, Altea, Calpe and Jávea — designed and built by one engineering-led team.' },
+    '/projects': { title: 'Projects | SKYLINE Engineering Villa Construction', description: 'Real SKYLINE Engineering projects in Benidorm, Finestrat and the Costa Blanca, with factual details on plot, size, status and services provided.' },
     '/privacy-policy': { title: 'Privacy Policy | SKYLINE Engineering', description: 'How SKYLINE Engineering processes and protects personal data submitted through this website.' },
     '/cookie-policy': { title: 'Cookie Policy | SKYLINE Engineering', description: 'Information about necessary technologies and consent-based analytics used by SKYLINE Engineering.' },
     '/legal-notice': { title: 'Legal Notice | SKYLINE Engineering', description: 'Legal information about SKYLINE ENGINEERING, S.L. and the terms governing this website.' },
@@ -59,6 +83,10 @@ const content: Record<Locale, Record<PagePath, { title: string; description: str
     '/about': { title: 'Sobre SKYLINE Engineering | Constructor de villas Costa Blanca', description: 'Conoce al equipo técnico que diseña y construye villas privadas a medida en Benidorm y toda la Costa Blanca.' },
     '/contact': { title: 'Hablemos de tu villa en Costa Blanca | SKYLINE', description: 'Contacta con SKYLINE Engineering para hablar de tu parcela, proyecto, presupuesto o idea de villa llave en mano.' },
     '/faq': { title: 'Preguntas frecuentes sobre la construcción de villas | SKYLINE', description: 'Respuestas sobre los servicios, el proceso, los plazos, el presupuesto y la garantía de SKYLINE Engineering.' },
+    '/villa-construction-finestrat': { title: 'Construcción de Villas en Finestrat | SKYLINE Engineering', description: 'Construcción de villas llave en mano en Finestrat, Alicante: arquitectura, ingeniería, licencia de obra y ejecución coordinadas por un equipo local en Finestrat.' },
+    '/villa-construction-benidorm': { title: 'Construcción de Villas en Benidorm | SKYLINE Engineering', description: 'Construcción de villas llave en mano en Benidorm: parcela, arquitectura, licencias, obra y entrega coordinadas por SKYLINE Engineering, con sede en Finestrat.' },
+    '/villa-construction-costa-blanca': { title: 'Construcción de Villas en Costa Blanca | SKYLINE Engineering', description: 'Construcción de villas llave en mano en toda la Costa Blanca — Benidorm, Finestrat, Altea, Calpe y Jávea — por un único equipo de arquitectura e ingeniería.' },
+    '/projects': { title: 'Proyectos | SKYLINE Engineering Construcción de Villas', description: 'Proyectos reales de SKYLINE Engineering en Benidorm, Finestrat y la Costa Blanca, con datos factuales sobre parcela, superficie, estado y servicios prestados.' },
     '/privacy-policy': { title: 'Política de privacidad | SKYLINE Engineering', description: 'Cómo SKYLINE Engineering trata y protege los datos personales enviados a través de este sitio web.' },
     '/cookie-policy': { title: 'Política de cookies | SKYLINE Engineering', description: 'Información sobre tecnologías necesarias y analítica basada en consentimiento en el sitio de SKYLINE Engineering.' },
     '/legal-notice': { title: 'Aviso legal | SKYLINE Engineering', description: 'Información jurídica de SKYLINE ENGINEERING, S.L. y condiciones de uso de este sitio web.' },

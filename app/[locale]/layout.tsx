@@ -38,13 +38,15 @@ const jsonLd = {
     {
       '@type': 'GeneralContractor',
       '@id': organizationId,
-      name: site.legal.companyName,
-      alternateName: site.shortName,
+      name: 'Skyline Engineering',
+      legalName: site.legal.companyName,
+      alternateName: [site.shortName, site.legal.companyName],
+      slogan: site.descriptor,
       url: site.url,
       logo: `${site.url}/images/logo/skyline-logo-full.png`,
       image: `${site.url}/images/og-cover.jpg`,
       description:
-        'Architecture, engineering, construction and interiors for bespoke villas across the Costa Blanca (Benidorm and surrounding area), Spain.',
+        'Skyline Engineering is a turnkey villa construction company based in Finestrat, Alicante, building private villas in Benidorm, Finestrat and across the Costa Blanca, Spain.',
       taxID: site.legal.nif,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -72,6 +74,7 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
+      name: 'Turnkey Villa Construction — Benidorm, Finestrat & Costa Blanca',
       serviceType: 'Turnkey villa design and construction',
       provider: { '@id': organizationId },
       areaServed: site.locations.map((name) => ({ '@type': 'City', name })),

@@ -34,7 +34,10 @@ export default function Hero() {
             <br />
             {' '}{t.hero.title2}
           </h1>
-          <p className="mt-6 text-warmwhite/85 text-lg md:text-xl max-w-md">
+          <p className="mt-6 text-warmwhite/85 text-lg md:text-xl max-w-lg">
+            {t.hero.intro}
+          </p>
+          <p className="mt-4 text-warmwhite/70 text-sm md:text-base">
             {t.hero.subtitle}
           </p>
           <p className="mt-2 text-warmwhite/60 text-sm tracking-wide">
@@ -50,8 +53,8 @@ export default function Hero() {
               {t.hero.discuss}
             </Link>
             <Link
-              href={localizePath('/villas')}
-              onClick={() => trackEvent('cta_click', { location: 'hero', destination: 'villas' })}
+              href={localizePath('/projects')}
+              onClick={() => trackEvent('cta_click', { location: 'hero', destination: 'projects' })}
               className="border border-warmwhite/70 text-warmwhite px-8 py-4 text-xs tracking-widest2 uppercase text-center hover:bg-warmwhite hover:text-ink transition-colors"
             >
               {t.hero.explore}

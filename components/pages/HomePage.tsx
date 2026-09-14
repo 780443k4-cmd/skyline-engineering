@@ -10,6 +10,7 @@ import ResponsibilityChain from '@/components/sections/ResponsibilityChain';
 import VillaGrid from '@/components/sections/VillaGrid';
 import EngineeringStats from '@/components/sections/EngineeringStats';
 import CTASection from '@/components/sections/CTASection';
+import LocationLinks from '@/components/sections/LocationLinks';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 
 function Lines({ text }: { text: string }) {
@@ -37,6 +38,7 @@ export default function HomePage() {
     <section className="py-24 md:py-32 bg-ink text-warmwhite"><div className="container-content"><SectionHeading eyebrow={t.home.one} title={<Lines text={t.home.oneTitle} />} text={t.home.oneText} align="center" dark /><ResponsibilityChain /></div></section>
     <section className="py-24 md:py-32"><div className="container-content"><SectionHeading eyebrow={t.home.collection} title={t.home.collectionTitle} text={t.home.collectionText} /><VillaGrid /></div></section>
     <section className="py-24 md:py-32 border-t border-line"><div className="container-content grid grid-cols-1 md:grid-cols-2 gap-12 items-start"><SectionHeading eyebrow={t.home.why} title={<Lines text={t.home.whyTitle} />} text={t.home.whyText} /><EngineeringStats /></div></section>
+    <LocationLinks />
     <CTASection title={<Lines text={t.home.finalTitle} />} text={t.home.finalText} />
   </>;
 }

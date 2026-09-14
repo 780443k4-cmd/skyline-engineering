@@ -9,6 +9,8 @@ import PrivacyPolicyPage from '@/components/pages/PrivacyPolicyPage';
 import CookiePolicyPage from '@/components/pages/CookiePolicyPage';
 import LegalNoticePage from '@/components/pages/LegalNoticePage';
 import FaqPage from '@/components/pages/FaqPage';
+import ProjectsPage from '@/components/pages/ProjectsPage';
+import { FinestratPage, BenidormPage, CostaBlancaPage } from '@/components/pages/LocationPage';
 import { buildMetadata, isLocale, isPagePath, type PagePath } from '@/data/seo';
 
 type Props = {
@@ -38,6 +40,13 @@ export default async function LocalizedPage({ params }: Props) {
     '/villas': VillasPage,
     '/process': ProcessPage,
     '/about': AboutPage,
+    '/villa-construction-finestrat': FinestratPage,
+    '/villa-construction-benidorm': BenidormPage,
+    '/villa-construction-costa-blanca': CostaBlancaPage,
+    // Registered here only for type-exhaustiveness / sitemap content reuse.
+    // The literal app/[locale]/projects/page.tsx route takes precedence for
+    // real requests, since Next.js prefers static segments over this catch-all.
+    '/projects': ProjectsPage,
     '/contact': ContactPage,
     '/privacy-policy': PrivacyPolicyPage,
     '/cookie-policy': CookiePolicyPage,
