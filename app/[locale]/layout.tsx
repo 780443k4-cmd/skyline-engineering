@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Cormorant_Garamond, Manrope } from 'next/font/google';
 import '../globals.css';
 import { notFound } from 'next/navigation';
@@ -108,7 +109,9 @@ export default async function RootLayout({ children, params }: { children: React
           <main className="pb-16 md:pb-0">{children}</main>
           <Footer />
           <WhatsAppButton />
-          <GoogleAnalytics />
+          <Suspense fallback={null}>
+            <GoogleAnalytics />
+          </Suspense>
         </LanguageProvider>
       </body>
     </html>
