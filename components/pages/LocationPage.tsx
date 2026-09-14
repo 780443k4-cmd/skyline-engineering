@@ -3,6 +3,7 @@
 import SectionHeading from '@/components/ui/SectionHeading';
 import CTASection from '@/components/sections/CTASection';
 import LocationLinks from '@/components/sections/LocationLinks';
+import RecentProjectBlock from '@/components/sections/RecentProjectBlock';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { site } from '@/data/site';
 import { locationPaths, type LocationKey } from '@/data/seo';
@@ -98,6 +99,7 @@ export function LocationPage({ location }: { location: LocationKey }) {
           <SectionHeading title={content.bodyTitle} text={content.bodyText} />
         </div>
       </section>
+      <RecentProjectBlock />
       <section className="py-24 md:py-32 bg-white/50 border-y border-line">
         <div className="container-content max-w-3xl">
           <div className="eyebrow mb-4">{content.faqEyebrow}</div>
