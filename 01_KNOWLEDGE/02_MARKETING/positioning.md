@@ -1,51 +1,95 @@
-# Позиционирование
+# Позиционирование SKYLINE ENGINEERING, S.L.
 
-Владелец: KNOWLEDGE_MANAGER (см. `00_SYSTEM/permissions.md`)
-Статус документа: PENDING_CONNECTION (реальные данные компании ещё не предоставлены)
+> derived from маркетинг/исследования ца/, rebuilt 2026-09-15
+> Источник: Offer_по_Хармози_SKYLINE_ENGINEERING.md (основной), DNA_целевой_аудитории (контекст)
+> Владелец: AGT-04 KNOWLEDGE_INTEL. Статус: STRATEGIC DESIGN — требует утверждения Денисом перед публикацией.
 
-## Как это работает
+## Товарная категория
 
-Каждый факт в этом файле должен иметь обязательные поля:
+Не «строительство вилл под ключ» (легко сравнивается по цене за м²).
 
-| Поле | Значение |
-|---|---|
-| FACT_ID | уникальный идентификатор, напр. POS-001 |
-| VALUE | сам факт |
-| SOURCE | конкретная ссылка/документ/человек |
-| SOURCE_TYPE | PRIMARY / OFFICIAL / THIRD_PARTY / INTERVIEW |
-| DATE_ADDED | дата добавления |
-| LAST_VERIFIED | дата последней проверки |
-| STATUS | VERIFIED / PROVISIONAL / FACT_PENDING / OUTDATED / REJECTED |
-| CONFIDENCE | HIGH / MEDIUM / LOW |
-| OWNER | KNOWLEDGE_MANAGER |
+**CONTROLLED VILLA DELIVERY** / рус. «управляемое строительство виллы» — новая категория,
+в которой сравнивается не цена, а состав системы: участок + feasibility + архитектура +
+инженерия + budget control + лицензирование + строительство + контроль качества +
+remote reporting + change control + handover, объединённые одной зоной ответственности.
 
-Факт без источника **не может** иметь статус VERIFIED (раздел 3 спецификации).
+## Название и обещание оффера
 
-## Текущие факты
+**SKYLINE VILLA CONTROL SYSTEM™** — «From Plot to Handover» / «От участка до ключей».
 
-_Фактов пока нет. Ниже — заготовка первой записи, которую KNOWLEDGE_MANAGER заполнит,
-как только будут предоставлены реальные материалы (сайт, брендбук, презентации,
-интервью с владельцем Skyline Engineering ES)._
+Оффер одним предложением (FACT, прямая цитата источника):
+> «SKYLINE проектирует и строит индивидуальную виллу на Costa Blanca через единую систему
+> управления проектом: сначала проверяем участок и реализуемость, фиксируем бюджетную рамку
+> и зоны ответственности, затем ведём архитектуру, инженерные решения, лицензирование,
+> строительство, контроль качества и сдачу — при этом заказчик принимает ключевые решения,
+> а операционную координацию берёт на себя одна команда.»
 
-```json
-{
-  "fact_id": "POS-001",
-  "value": null,
-  "source": null,
-  "source_type": null,
-  "date_added": "2026-08-23",
-  "last_verified": null,
-  "status": "FACT_PENDING",
-  "confidence": "LOW",
-  "owner": "KNOWLEDGE_MANAGER"
-}
-```
+Ядро: **«Вы принимаете ключевые решения. Мы управляем процессом/сложностью.»**
 
-## Как заполнить
+## Против кого работает оффер
 
-Добавьте документы в `01_KNOWLEDGE/09_SOURCE_DOCUMENTS/` (PDF/DOCX/XLSX/CSV/TXT/MD) или
-опишите факты прямо в чате — KNOWLEDGE_MANAGER проведёт их через конвейер:
+Главный враг — не конкурент, а **НЕОПРЕДЕЛЁННОСТЬ** (участок, бюджет, scope, сроки лицензии,
+ответственность, дистанционный контроль, изменения, качество, скрытые расходы).
 
-```
-LOCAL FILE → HASH → DUPLICATE CHECK → EXTRACT → CLASSIFY → INDEX → FACT EXTRACTION → SOURCE RECORD → KNOWLEDGE LIBRARY
-```
+## Value Equation (Hormozi, адаптация)
+
+`Ценность = (идеальный дом × уверенность, что его реально построят) / (время до ясности × личное участие/стресс клиента)`
+
+Практика: не обещать скорость стройки, а ускорять **первую ясность** (24–48 ч после
+квалификации → чек-лист/следующий шаг; после данных участка → red flags; feasibility →
+GO/MODIFY/STOP).
+
+## Offer stack (13 пунктов, CORE 1–10 в источнике)
+
+Plot & Feasibility Control → Family Villa Brief → Budget Control Map → Architecture →
+Engineering → Licensing Roadmap → Construction → Quality Control → Remote Reporting →
+Decision Calendar → Change Control → Stage Payment Visibility → Handover System.
+
+Бонусы (снимают конкретные возражения, не «подарки»): Plot Risk Checklist, Buy vs Build
+Decision Map, Scope Comparison Sheet, Remote Client Control Pack, Budget Reality Map,
+Family Decision Session, Handover Readiness Pack.
+
+## Risk reversal — только PROCESS GUARANTEES
+
+Разрешено гарантировать: Scope Clarity (что входит/не входит письменно до старта оплачиваемого
+этапа), Change Transparency (ни одно существенное изменение цены/срока не считается
+утверждённым без документированного согласия клиента), Reporting Guarantee (ритм отчётности
+по контракту + service remedy при пропуске), Feasibility Deliverable Guarantee, No Hidden
+Scope, опция Independent Control (третья сторона для премиум-клиента).
+
+**Запрещено обещать** (FACT, прямой список источника): гарантированная лицензия/точный срок
+муниципалитета, гарантированная итоговая цена, инвестиционная доходность, ВНЖ за недвижимость.
+
+## Три уровня цены / воронка
+
+1. **Hero offer**: SKYLINE Private Villa Feasibility (низкий риск, первая ясность, не продажа
+   контракта).
+2. Design & Preconstruction (feasibility → brief → архитектура → инженерия → бюджет →
+   лицензирование).
+3. Full Villa Delivery (основной high-ticket контракт).
+
+Принцип: **SELL THE NEXT STEP** — не продавать €700k–1.5m контракт человеку, увидевшему первое
+видео.
+
+## Скарсити/срочность — только реальные
+
+Scarcity: ограниченное число одновременных full-cycle проектов — использовать только если это
+операционно верно (не подтверждено как факт компании — UNKNOWN, требует проверки у Дениса).
+Urgency: только из реального календаря клиента (reservation участка, сезон, школа, переезд),
+никогда искусственные дедлайны/скидки.
+
+## Центральные рекламные идеи
+
+«BUILD THE VILLA. NOT A SECOND JOB.» / «СТРОЙТЕ ВИЛЛУ. НЕ ВТОРУЮ РАБОТУ.»
+«FROM PLOT TO KEYS. ONE CONTROL SYSTEM.» / «ОТ УЧАСТКА ДО КЛЮЧЕЙ. ОДНА СИСТЕМА КОНТРОЛЯ.»
+
+## Что НЕ добавлять в оффер (жёсткий запрет источника)
+
+Fake discounts/deadlines/scarcity, «гарантируем лицензию/точную цену/срок муниципалитета/
+доходность/ВНЖ», искусственно завышенная ценность бонусов, «27 бесполезных PDF» ради объёма.
+
+## Статус и следующий уровень
+
+Документ содержит SOURCE-DERIVED (боли/JTBD/сегменты — из исследований) + HORMOZI FRAMEWORK
+(адаптация методологии) + STRATEGIC DESIGN (конкретные названия/формулировки — не валидированы
+продажами/юристом). Не публиковать формулировки гарантий без юридической проверки.

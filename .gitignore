@@ -8,3 +8,13 @@ out
 *.tsbuildinfo
 
 _ops/
+
+# Крупные локальные медиа-библиотеки — бэкапятся отдельно (11_BACKUPS/), не через git
+_to_delete/
+11_BACKUPS/*.zip
+генерация видео/
+изобр/
+Idealista Land Photos/
+05_SOCIAL/assets/
+05_SOCIAL/Reels/
+Claude outputs/
