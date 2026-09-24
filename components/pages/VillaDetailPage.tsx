@@ -92,9 +92,26 @@ export default function VillaDetailPage({ slug }: { slug: string }) {
         </div>
       </section>
 
-      {/* Floor plan: intentionally omitted for now — no plan files exist yet for
-          these concepts. Add a section here (image + room breakdown) once real
-          or clearly-labelled schematic plans are provided; do not fabricate one. */}
+      {villa.floorPlanImage && (
+        <section className="py-16 md:py-24 border-b border-line">
+          <div className="container-content">
+            <div className="eyebrow mb-4">{t.villasPage.floorPlanTitle}</div>
+            <div className="relative w-full bg-white">
+              <Image
+                src={villa.floorPlanImage}
+                alt={`${name} — ${t.villasPage.floorPlanTitle.toLowerCase()}`}
+                width={villa.floorPlanWidth ?? 1600}
+                height={villa.floorPlanHeight ?? 1600}
+                sizes="(min-width: 768px) 900px, 100vw"
+                className="w-full h-auto"
+              />
+            </div>
+            <p className="mt-6 text-sm text-graphite/60 leading-relaxed max-w-2xl">
+              {t.villasPage.floorPlanCaption}
+            </p>
+          </div>
+        </section>
+      )}
 
       <section className="py-16 border-b border-line bg-white/50">
         <div className="container-content max-w-2xl">

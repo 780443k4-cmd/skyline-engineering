@@ -197,6 +197,9 @@ const pages = {
         'Кожна резиденція створюється навколо клієнта, ділянки та бажаного способу життя.',
       concepts: 'Архітектурні концепції',
       examples: 'Приклади конфігурацій',
+      floorPlanTitle: 'Поверхові плани',
+      floorPlanCaption:
+        'Ілюстративна архітектурна концепція. Остаточне планування узгоджується індивідуально під вашу ділянку та побажання.',
       examplesText:
         'Орієнтир щодо масштабу, стилю та бюджету — остаточний проєкт завжди адаптується до вашої ділянки й побажань.',
       factorsEye: 'Що впливає на остаточну вартість',
@@ -450,6 +453,9 @@ const pages = {
         'Каждая резиденция создаётся вокруг клиента, участка и желаемого образа жизни.',
       concepts: 'Архитектурные концепции',
       examples: 'Примеры конфигураций',
+      floorPlanTitle: 'Поэтажные планы',
+      floorPlanCaption:
+        'Иллюстративная архитектурная концепция. Итоговая планировка согласовывается индивидуально под ваш участок и пожелания.',
       examplesText:
         'Ориентир по масштабу, стилю и бюджету — итоговый проект всегда адаптируется к вашему участку и пожеланиям.',
       factorsEye: 'Что влияет на итоговую стоимость',
@@ -702,6 +708,9 @@ const pages = {
         'Every residence is designed around the client, the land and the way they want to live.',
       concepts: 'Architectural Concepts',
       examples: 'Example configurations',
+      floorPlanTitle: 'Floor Plans',
+      floorPlanCaption:
+        'Illustrative architectural concept. The final layout is tailored individually to your plot and brief.',
       examplesText:
         'A starting point for scale, style and budget — every villa is ultimately shaped around your plot and brief.',
       factorsEye: 'What Affects the Final Price',
@@ -951,6 +960,9 @@ const pages = {
         'Cada residencia se diseña en torno al cliente, la parcela y su forma de vivir.',
       concepts: 'Conceptos arquitectónicos',
       examples: 'Configuraciones de ejemplo',
+      floorPlanTitle: 'Planos de planta',
+      floorPlanCaption:
+        'Concepto arquitectónico ilustrativo. La distribución final se adapta individualmente a tu parcela y necesidades.',
       examplesText:
         'Un punto de partida en cuanto a escala, estilo y presupuesto; cada villa se adapta finalmente a tu parcela y tus necesidades.',
       factorsEye: 'Qué influye en el precio final',

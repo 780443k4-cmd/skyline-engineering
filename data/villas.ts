@@ -7,6 +7,13 @@ export type VillaConcept = {
   priceFrom: string;
   description: string;
   image: string;
+  // Illustrative schematic floor-plan reference. Omitted (undefined) for concepts
+  // that don't have one yet — do not fabricate a placeholder path. Width/height
+  // are the source file's actual pixel dimensions, required alongside the image
+  // so Next/Image can preserve its real aspect ratio (portrait vs. landscape).
+  floorPlanImage?: string;
+  floorPlanWidth?: number;
+  floorPlanHeight?: number;
 };
 
 // IMPORTANT: These are architectural concepts / visualizations for illustrative
@@ -22,6 +29,9 @@ export const villaConcepts: VillaConcept[] = [
     description:
       'A compact two-storey contemporary villa with panoramic glazing, a private pool and deep sheltered terraces.',
     image: '/images/concepts/villa-aura-photo-v2.jpg',
+    floorPlanImage: '/images/floor-plans/villa-aura-floor-plan.png',
+    floorPlanWidth: 1024,
+    floorPlanHeight: 1536,
   },
   {
     slug: 'villa-horizon',
@@ -33,6 +43,9 @@ export const villaConcepts: VillaConcept[] = [
     description:
       'A custom-designed family villa with generous outdoor living, framed views and a layout shaped around the plot.',
     image: '/images/concepts/villa-horizon.jpg',
+    floorPlanImage: '/images/floor-plans/villa-horizon-floor-plan.png',
+    floorPlanWidth: 1536,
+    floorPlanHeight: 1024,
   },
   {
     slug: 'villa-panorama',
@@ -44,6 +57,9 @@ export const villaConcepts: VillaConcept[] = [
     description:
       'An elevated specification villa with advanced architecture, large terraces and premium interior detailing.',
     image: '/images/concepts/villa-panorama.jpg',
+    floorPlanImage: '/images/floor-plans/villa-panorama-floor-plan.png',
+    floorPlanWidth: 1024,
+    floorPlanHeight: 1536,
   },
   {
     slug: 'villa-signature',
