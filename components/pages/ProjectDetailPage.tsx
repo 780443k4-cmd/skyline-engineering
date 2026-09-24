@@ -11,12 +11,16 @@ import { site } from '@/data/site';
 
 export default function ProjectDetailPage({ slug }: { slug: string }) {
   const { t, locale, localizePath } = useLanguage();
-  const project = projects.find((item) => item.slug === slug);
+  const projectIndex = projects.findIndex((item) => item.slug === slug);
+  const project = projects[projectIndex];
 
   if (!project) {
     notFound();
   }
 
+  // Free-text fields not stored on the base (English) Project record — see
+  // data/translations.ts `projects` (matched by array index) for why.
+  const localized = t.projects[projectIndex];
   const f = t.projectsPage.fields;
   const statusLabel = t.projectsPage.status[project!.status];
   const isTurnkey = project!.status === 'completed' && project!.servicesProvided.length >= 6;
@@ -60,7 +64,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
           {isTurnkey && (
             <p className="mt-4 text-xs tracking-widest2 uppercase text-skyline">{t.projectsPage.turnkeyLabel}</p>
           )}
-          <p className="mt-6 text-graphite/75 text-lg max-w-2xl">{project!.summary}</p>
+          <p className="mt-6 text-graphite/75 text-lg max-w-2xl">{localized.summary}</p>
         </div>
       </section>
 
@@ -72,7 +76,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
           </div>
           <div>
             <div className="eyebrow mb-2">{f.type}</div>
-            {project!.type}
+            {localized.type}
           </div>
           {project!.plotArea && (
             <div>
@@ -110,9 +114,9 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
           <div className="container-content">
             <div className="eyebrow mb-4">{f.servicesProvided}</div>
             <ul className="flex flex-wrap gap-3 text-sm">
-              {project!.servicesProvided.map((s) => (
+              {project!.servicesProvided.map((s, i) => (
                 <li key={s} className="border border-line px-4 py-2">
-                  {s}
+                  {t.chain[i + 1]}
                 </li>
               ))}
             </ul>
@@ -125,7 +129,7 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
           <div className="container-content">
             <div className="eyebrow mb-6">{f.gallery}</div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-              {project!.gallery.map((img) => (
+              {project!.gallery.map((img, i) => (
                 <figure key={img.src}>
                   <Image
                     src={img.src}
@@ -135,7 +139,9 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
                     className="w-full h-auto object-cover"
                   />
                   {img.caption && (
-                    <figcaption className="mt-2 text-xs text-graphite/60">{img.caption}</figcaption>
+                    <figcaption className="mt-2 text-xs text-graphite/60">
+                      {localized.captions[i] ?? img.caption}
+                    </figcaption>
                   )}
                 </figure>
               ))}

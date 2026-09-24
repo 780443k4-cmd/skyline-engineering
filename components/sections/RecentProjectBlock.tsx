@@ -9,14 +9,16 @@ import { projects } from '@/data/projects';
  * Compact proof-of-work card linking location pages (Finestrat / Benidorm /
  * Costa Blanca) to a real, completed project page. Only renders once at
  * least one verified project exists in data/projects.ts — no placeholder
- * or invented content. Project fields (name/location/type) are stored
- * unlocalized in data/projects.ts by design (see that file), matching how
- * the /projects and /projects/[slug] pages already render them on every
- * locale.
+ * or invented content. data/projects.ts itself holds locale-neutral facts
+ * only (name is a proper noun, location stays in Spanish as elsewhere on
+ * the site); free-text fields like `type` are localized via t.projects
+ * (data/translations.ts), matched by array index — see VillaDetailPage /
+ * ProjectDetailPage for the same pattern.
  */
 export default function RecentProjectBlock() {
   const { t, localizePath } = useLanguage();
   const project = projects[0];
+  const localized = t.projects[0];
   if (!project) return null;
 
   const cover =
@@ -40,7 +42,7 @@ export default function RecentProjectBlock() {
           <div>
             <h3 className="font-display text-2xl md:text-3xl mb-2">{project.name}</h3>
             <p className="text-sm text-graphite/70 mb-1">
-              {project.location} — {project.type}
+              {project.location} — {localized.type}
             </p>
             {project.status === 'completed' && (
               <p className="text-sm text-graphite/70 mb-4">{t.projectsPage.turnkeyLabel}</p>

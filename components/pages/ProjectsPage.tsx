@@ -68,18 +68,21 @@ export default function ProjectsPage() {
       ) : (
         <section className="py-24 md:py-32">
           <div className="container-content grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-14">
-            {projects.map((project) => (
-              <Link
-                key={project.slug}
-                href={localizePath(`/projects/${project.slug}`)}
-                className="block border border-line p-8 hover:border-skyline transition-colors"
-              >
-                <div className="eyebrow mb-2">{project.location}</div>
-                <h2 className="font-display text-2xl mb-3">{project.name}</h2>
-                <p className="text-sm text-graphite/70 leading-relaxed mb-4">{project.summary}</p>
-                <span className="text-xs tracking-widest2 uppercase">{p.status[project.status]}</span>
-              </Link>
-            ))}
+            {projects.map((project, index) => {
+              const localized = t.projects[index];
+              return (
+                <Link
+                  key={project.slug}
+                  href={localizePath(`/projects/${project.slug}`)}
+                  className="block border border-line p-8 hover:border-skyline transition-colors"
+                >
+                  <div className="eyebrow mb-2">{project.location}</div>
+                  <h2 className="font-display text-2xl mb-3">{project.name}</h2>
+                  <p className="text-sm text-graphite/70 leading-relaxed mb-4">{localized.summary}</p>
+                  <span className="text-xs tracking-widest2 uppercase">{p.status[project.status]}</span>
+                </Link>
+              );
+            })}
           </div>
         </section>
       )}

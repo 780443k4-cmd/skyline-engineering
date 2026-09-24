@@ -1,43 +1,44 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import ProjectDetailPage from '@/components/pages/ProjectDetailPage';
+import VillaDetailPage from '@/components/pages/VillaDetailPage';
 import { isLocale, locales, localizedPath } from '@/data/seo';
 import { site } from '@/data/site';
-import { projects } from '@/data/projects';
+import { villaConcepts } from '@/data/villas';
 import { dictionaries } from '@/data/translations';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export function generateStaticParams() {
-  return locales.flatMap((locale) => projects.map((project) => ({ locale, slug: project.slug })));
+  return locales.flatMap((locale) => villaConcepts.map((villa) => ({ locale, slug: villa.slug })));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params;
   if (!isLocale(locale)) return {};
-  const projectIndex = projects.findIndex((item) => item.slug === slug);
-  const project = projects[projectIndex];
-  if (!project) return {};
-  const summary = dictionaries[locale].projects[projectIndex].summary as string;
+  const index = villaConcepts.findIndex((item) => item.slug === slug);
+  if (index === -1) return {};
 
-  const path = `/projects/${slug}`;
+  const t = dictionaries[locale];
+  const [name, , priceFrom, , description] = t.villas[index] as string[];
+
+  const path = `/villas/${slug}`;
   const canonical = localizedPath(locale, path);
   const languages = Object.fromEntries(locales.map((language) => [language, localizedPath(language, path)]));
-  const title = `${project.name} — ${project.location} | SKYLINE Engineering`;
+  const title = `${name} — ${t.common.concept} | SKYLINE Engineering`;
 
   return {
     metadataBase: new URL(site.url),
     title: { absolute: title },
-    description: summary,
+    description: `${priceFrom}. ${description}`,
     // AUD-002: Ukrainian is the site's primary language — x-default points at /uk.
     alternates: { canonical, languages: { ...languages, 'x-default': localizedPath('uk', path) } },
-    openGraph: { title, description: summary, url: canonical, siteName: 'SKYLINE Engineering', type: 'website' },
+    openGraph: { title, description, url: canonical, siteName: 'SKYLINE Engineering', type: 'website' },
   };
 }
 
-export default async function ProjectDetail({ params }: Props) {
+export default async function VillaDetail({ params }: Props) {
   const { locale, slug } = await params;
   if (!isLocale(locale)) notFound();
-  if (!projects.some((project) => project.slug === slug)) notFound();
-  return <ProjectDetailPage slug={slug} />;
+  if (!villaConcepts.some((villa) => villa.slug === slug)) notFound();
+  return <VillaDetailPage slug={slug} />;
 }

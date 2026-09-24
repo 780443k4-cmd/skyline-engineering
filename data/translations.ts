@@ -364,6 +364,22 @@ const pages = {
       recentProjectCta: 'Дивитися проєкт',
       turnkeyLabel: 'Об’єкт здано під ключ',
     },
+    // Positional array matching data/projects.ts `projects` order — localized
+    // fields not present on the base (English) Project record: type, summary,
+    // and gallery captions keyed by their index in project.gallery.
+    projects: [
+      {
+        type: 'Закритий комплекс — 6 вілл',
+        summary:
+          'Закритий комплекс із шести вілл у Ла-Нусії, побудований SKYLINE Engineering і переданий власникам у 2026 році. Кожна вілла має площу забудови 120 м², 3 спальні, 2 санвузли, приватний басейн 3×8 м, терасу та солярій на даху.',
+        captions: {
+          0: 'Земляні роботи — початок будівництва на закритій території.',
+          3: 'Заливка залізобетонної конструкції.',
+          25: 'Готова вілла — приватний басейн, тераса та вихід на солярій.',
+          26: 'Вид з дрона на завершену закриту забудову з шести вілл.',
+        },
+      },
+    ],
   },
   ru: {
     hero: {
@@ -601,6 +617,22 @@ const pages = {
       recentProjectCta: 'Смотреть проект',
       turnkeyLabel: 'Объект сдан под ключ',
     },
+    // Positional array matching data/projects.ts `projects` order — localized
+    // fields not present on the base (English) Project record: type, summary,
+    // and gallery captions keyed by their index in project.gallery.
+    projects: [
+      {
+        type: 'Закрытый комплекс — 6 вилл',
+        summary:
+          'Закрытый комплекс из шести вилл в Ла-Нусии, построенный SKYLINE Engineering и переданный владельцам в 2026 году. Площадь застройки каждой виллы — 120 м², 3 спальни, 2 санузла, частный бассейн 3×8 м, терраса и солярий на крыше.',
+        captions: {
+          0: 'Земляные работы — начало строительства на закрытой территории.',
+          3: 'Заливка железобетонной конструкции.',
+          25: 'Готовая вилла — частный бассейн, терраса и выход на солярий.',
+          26: 'Вид с дрона на завершённую закрытую застройку из шести вилл.',
+        },
+      },
+    ],
   },
   en: {
     hero: {
@@ -833,6 +865,22 @@ const pages = {
       recentProjectCta: 'View project',
       turnkeyLabel: 'Delivered turnkey',
     },
+    // Positional array matching data/projects.ts `projects` order — localized
+    // fields not present on the base (English) Project record: type, summary,
+    // and gallery captions keyed by their index in project.gallery.
+    projects: [
+      {
+        type: 'Gated development — 6 villas',
+        summary:
+          'A gated development of six villas in La Nucía, built by Skyline Engineering and handed over to their owners in 2026. Each villa has a built area of 120 m², with 3 bedrooms, 2 bathrooms, a private 3×8 m pool, a terrace and a rooftop solarium.',
+        captions: {
+          0: 'Groundworks — the start of construction on the closed urbanization.',
+          3: 'Reinforced concrete structure being poured.',
+          25: 'Finished villa — private pool, terrace and solarium access.',
+          26: 'Drone view of the finished, closed urbanization of six villas.',
+        },
+      },
+    ],
   },
   es: {
     hero: {
@@ -1063,6 +1111,22 @@ const pages = {
       recentProjectCta: 'Ver proyecto',
       turnkeyLabel: 'Entregado llave en mano',
     },
+    // Positional array matching data/projects.ts `projects` order — localized
+    // fields not present on the base (English) Project record: type, summary,
+    // and gallery captions keyed by their index in project.gallery.
+    projects: [
+      {
+        type: 'Urbanización cerrada — 6 villas',
+        summary:
+          'Una urbanización cerrada de seis villas en La Nucía, construida por Skyline Engineering y entregada a sus propietarios en 2026. Cada villa tiene una superficie construida de 120 m², con 3 dormitorios, 2 baños, piscina privada de 3×8 m, terraza y solárium en la azotea.',
+        captions: {
+          0: 'Movimiento de tierras — inicio de la construcción en la urbanización cerrada.',
+          3: 'Vertido de la estructura de hormigón armado.',
+          25: 'Villa terminada — piscina privada, terraza y acceso al solárium.',
+          26: 'Vista aérea de la urbanización cerrada terminada, con las seis villas.',
+        },
+      },
+    ],
   },
 };
 
@@ -1527,30 +1591,35 @@ const form = {
   },
 };
 
+// Index 4 of each tuple is the extended, single-paragraph description shown on
+// the villa's own detail page (app/[locale]/villas/[slug]/page.tsx). Kept as a
+// positional tuple, matched by array index to villaConcepts in data/villas.ts,
+// to mirror the existing localization pattern used for name/bedrooms/price/size
+// below rather than introducing a second, inconsistent data shape.
 const villas = {
   uk: [
-    ['Villa Aura', '3 спальні', 'Від €400 000', '120 м²'],
-    ['Villa Horizon', '4 спальні', 'Від €550 000', '140 м²'],
-    ['Villa Panorama', '4 спальні', 'Від €750 000', 'від 180 м²'],
-    ['Villa Signature', '5+ спалень', 'Ціна за запитом', '500+ м²'],
+    ['Villa Aura', '3 спальні', 'Від €400 000', '120 м²', 'Villa Aura — наш найкомпактніший концепт: двоповерхова вілла в сучасному стилі з панорамним склінням, приватним басейном і глибокими затіненими терасами. Вона підходить для менш просторої ділянки, не поступаючись у світлі, приватності чи можливостях для життя на відкритому повітрі, і добре працює як перша вілла або будинок «під замок» на Коста-Бланці.'],
+    ['Villa Horizon', '4 спальні', 'Від €550 000', '140 м²', 'Villa Horizon — індивідуально спроєктована сімейна вілла, форма якої визначається конкретною ділянкою, її орієнтацією та видами, а не фіксованим плануванням. Просторі зони для життя на відкритому повітрі, продумані видові осі та більш індивідуальна архітектурна мова роблять її відправною точкою для клієнтів, які хочуть віллу, максимально підлаштовану під їхній спосіб життя.'],
+    ['Villa Panorama', '4 спальні', 'Від €750 000', 'від 180 м²', 'Villa Panorama піднімає рівень комплектації: більш складна архітектура, більші тераси та вищий рівень опрацювання інтер’єру. Цей концепт розрахований на ділянки з виразними видами чи перепадом висот, де додатковий масштаб і якість оздоблення справді працюють на результат.'],
+    ['Villa Signature', '5+ спалень', 'Ціна за запитом', '500+ м²', 'Villa Signature не має фіксованої верхньої межі комплектації. Це повністю індивідуальна резиденція, яку ми розробляємо на основі вашої ділянки та технічного завдання без готового шаблону — концепція, масштаб і деталізація визначаються окремо для кожного проєкту в прямій співпраці з нашою командою архітекторів та інженерів.'],
   ],
   ru: [
-    ['Villa Aura', '3 спальни', 'От €400 000', '120 м²'],
-    ['Villa Horizon', '4 спальни', 'От €550 000', '140 м²'],
-    ['Villa Panorama', '4 спальни', 'От €750 000', 'от 180 м²'],
-    ['Villa Signature', '5+ спален', 'Цена по запросу', '500+ м²'],
+    ['Villa Aura', '3 спальни', 'От €400 000', '120 м²', 'Villa Aura — наш самый компактный концепт: двухэтажная вилла в современном стиле с панорамным остеклением, частным бассейном и глубокими затенёнными террасами. Она подходит для менее просторного участка, не уступая в свете, приватности и возможностях для жизни на открытом воздухе, и хорошо работает как первая вилла или дом для отдыха «под ключ» на Коста-Бланке.'],
+    ['Villa Horizon', '4 спальни', 'От €550 000', '140 м²', 'Villa Horizon — индивидуально спроектированная семейная вилла, форма которой определяется конкретным участком, его ориентацией и видами, а не фиксированной планировкой. Просторные зоны для жизни на открытом воздухе, продуманные видовые оси и более индивидуальный архитектурный язык делают её отправной точкой для клиентов, которые хотят виллу, максимально подстроенную под их образ жизни.'],
+    ['Villa Panorama', '4 спальни', 'От €750 000', 'от 180 м²', 'Villa Panorama поднимает уровень комплектации: более сложная архитектура, большие террасы и более высокий уровень проработки интерьера. Этот концепт рассчитан на участки с выразительными видами или перепадом высот, где дополнительный масштаб и качество отделки действительно работают на результат.'],
+    ['Villa Signature', '5+ спален', 'Цена по запросу', '500+ м²', 'Villa Signature не имеет фиксированного потолка комплектации. Это полностью индивидуальная резиденция, которую мы разрабатываем на основе вашего участка и технического задания без готового шаблона — концепция, масштаб и детализация определяются отдельно для каждого проекта в прямом взаимодействии с нашей командой архитекторов и инженеров.'],
   ],
   en: [
-    ['Villa Aura', '3 bedrooms', 'From €400,000', '120 m²'],
-    ['Villa Horizon', '4 bedrooms', 'From €550,000', '140 m²'],
-    ['Villa Panorama', '4 bedrooms', 'From €750,000', 'from 180 m²'],
-    ['Villa Signature', '5+ bedrooms', 'Price on request', '500+ m²'],
+    ['Villa Aura', '3 bedrooms', 'From €400,000', '120 m²', 'Villa Aura is our most compact concept: a two-storey contemporary villa built around panoramic glazing, a private pool and deep, shaded terraces. It suits a smaller plot without compromising on light, privacy or outdoor living, and works well as a first villa or a lock-up-and-leave home on the Costa Blanca.'],
+    ['Villa Horizon', '4 bedrooms', 'From €550,000', '140 m²', 'Villa Horizon is a custom-designed family villa built around the specific shape, orientation and views of your plot rather than a fixed floor plan. Generous outdoor living areas, framed sightlines and a more individual architectural language make it the starting point for clients who want a villa shaped closely around how they actually live.'],
+    ['Villa Panorama', '4 bedrooms', 'From €750,000', 'from 180 m²', 'Villa Panorama raises the specification: a more advanced architectural language, larger terraces and a higher level of interior detailing throughout. It is designed for plots with strong views or elevation, where the extra scale and finish are put to genuine use.'],
+    ['Villa Signature', '5+ bedrooms', 'Price on request', '500+ m²', 'Villa Signature has no fixed specification ceiling. It is a fully bespoke residence, developed from your plot and brief without a template to work from — the concept, scale and detailing are set project by project, in direct consultation with our architecture and engineering team.'],
   ],
   es: [
-    ['Villa Aura', '3 dormitorios', 'Desde 400.000 €', '120 m²'],
-    ['Villa Horizon', '4 dormitorios', 'Desde 550.000 €', '140 m²'],
-    ['Villa Panorama', '4 dormitorios', 'Desde 750.000 €', 'desde 180 m²'],
-    ['Villa Signature', '5+ dormitorios', 'Precio a consultar', '500+ m²'],
+    ['Villa Aura', '3 dormitorios', 'Desde 400.000 €', '120 m²', 'Villa Aura es nuestro concepto más compacto: una villa contemporánea de dos plantas construida en torno a grandes acristalamientos panorámicos, una piscina privada y terrazas profundas y protegidas. Se adapta bien a parcelas de menor tamaño sin renunciar a la luz, la privacidad ni la vida al aire libre, y funciona muy bien como primera villa o segunda residencia en la Costa Blanca.'],
+    ['Villa Horizon', '4 dormitorios', 'Desde 550.000 €', '140 m²', 'Villa Horizon es una villa familiar de diseño personalizado, pensada a partir de la forma, orientación y vistas concretas de tu parcela, en lugar de una planta fija. Amplias zonas de vida exterior, vistas cuidadosamente enmarcadas y un lenguaje arquitectónico más singular la convierten en el punto de partida ideal para quienes buscan una villa ajustada a su forma real de vivir.'],
+    ['Villa Panorama', '4 dormitorios', 'Desde 750.000 €', 'desde 180 m²', 'Villa Panorama eleva el nivel de especificación: una arquitectura más avanzada, terrazas más amplias y un mayor nivel de detalle en el interior. Está pensada para parcelas con vistas destacadas o desnivel, donde ese mayor tamaño y acabado se aprovechan realmente.'],
+    ['Villa Signature', '5+ dormitorios', 'Precio a consultar', '500+ m²', 'Villa Signature no tiene techo de especificación fijo. Es una residencia totalmente a medida, desarrollada a partir de tu parcela y tu briefing sin partir de una plantilla — el concepto, la escala y el nivel de detalle se definen proyecto a proyecto, en contacto directo con nuestro equipo de arquitectura e ingeniería.'],
   ],
 };
 
