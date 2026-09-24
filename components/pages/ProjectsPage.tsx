@@ -4,6 +4,7 @@ import Link from 'next/link';
 import CTASection from '@/components/sections/CTASection';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { projects } from '@/data/projects';
+import { locationPaths } from '@/data/seo';
 
 function Lines({ text }: { text: string }) {
   const [first, second] = text.split('\n');
@@ -34,6 +35,12 @@ export default function ProjectsPage() {
             <Lines text={p.title} />
           </h1>
           <p className="mt-6 text-graphite/75 text-lg max-w-2xl">{p.intro}</p>
+          <Link
+            href={localizePath(locationPaths.benidorm)}
+            className="mt-6 inline-block text-sm underline hover:text-skyline transition-colors"
+          >
+            {t.locationPages.benidorm.eyebrow}
+          </Link>
         </div>
       </section>
 

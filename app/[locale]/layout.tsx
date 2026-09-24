@@ -28,6 +28,14 @@ const organizationId = `${site.url}#organization`;
 const founderId = `${site.url}#founder-denys-druz`;
 const websiteId = `${site.url}#website`;
 
+// Costa Blanca / Alicante province are broader regions, not cities — kept as
+// separate AdministrativeArea entries rather than mixed into the City list
+// from site.locations, so the graph stays geographically accurate.
+const regionAreaServed = [
+  { '@type': 'AdministrativeArea', name: 'Costa Blanca' },
+  { '@type': 'AdministrativeArea', name: 'Alicante' },
+];
+
 // Single canonical business entity (GeneralContractor is a more specific subtype of
 // Organization/LocalBusiness) referenced by @id everywhere else, instead of two separate
 // top-level nodes describing the same real-world entity. All values below are sourced from
@@ -47,7 +55,7 @@ const jsonLd = {
       logo: `${site.url}/images/logo/skyline-logo-full.png`,
       image: `${site.url}/images/og-cover.jpg`,
       description:
-        'Skyline Engineering is a turnkey villa construction company based in Finestrat, Alicante, building private villas in Benidorm, Finestrat and across the Costa Blanca, Spain.',
+        'Skyline Engineering is a construction company based in Finestrat, Alicante, specialising in turnkey construction of private houses and villas in Benidorm, Finestrat and across the surrounding Costa Blanca, Spain.',
       taxID: site.legal.nif,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -59,7 +67,7 @@ const jsonLd = {
         addressRegion: 'Alicante',
         addressCountry: 'ES',
       },
-      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
+      areaServed: [...site.locations.map((name) => ({ '@type': 'City', name })), ...regionAreaServed],
       sameAs: site.social.map((social) => social.href),
       founder: { '@id': founderId },
     },
@@ -75,10 +83,10 @@ const jsonLd = {
     },
     {
       '@type': 'Service',
-      name: 'Turnkey Villa Construction — Benidorm, Finestrat & Costa Blanca',
-      serviceType: 'Turnkey villa design and construction',
+      name: 'Turnkey House & Villa Construction — Benidorm, Finestrat & Costa Blanca',
+      serviceType: 'Turnkey house and villa design and construction',
       provider: { '@id': organizationId },
-      areaServed: site.locations.map((name) => ({ '@type': 'City', name })),
+      areaServed: [...site.locations.map((name) => ({ '@type': 'City', name })), ...regionAreaServed],
     },
     {
       '@type': 'WebSite',

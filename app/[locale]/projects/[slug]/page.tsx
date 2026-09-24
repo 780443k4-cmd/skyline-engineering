@@ -26,7 +26,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     metadataBase: new URL(site.url),
     title: { absolute: title },
     description: project.summary,
-    alternates: { canonical, languages: { ...languages, 'x-default': localizedPath('en', path) } },
+    // AUD-002: Ukrainian is the site's primary language — x-default points at /uk.
+    alternates: { canonical, languages: { ...languages, 'x-default': localizedPath('uk', path) } },
     openGraph: { title, description: project.summary, url: canonical, siteName: 'SKYLINE Engineering', type: 'website' },
   };
 }

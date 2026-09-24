@@ -6,7 +6,10 @@ import { site } from '@/data/site';
 import { locationPaths, type LocationKey } from '@/data/seo';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 
-const locationOrder: LocationKey[] = ['finestrat', 'benidorm', 'costaBlanca'];
+// Benidorm first: the main commercial priority (Finestrat stays listed — it's
+// the company's actual registered base). Must stay in sync with the paired
+// `data/translations.ts` `home.locationsItems` array order (index 0 = Benidorm).
+const locationOrder: LocationKey[] = ['benidorm', 'finestrat', 'costaBlanca'];
 
 export default function Footer() {
   const { localizePath, t } = useLanguage();

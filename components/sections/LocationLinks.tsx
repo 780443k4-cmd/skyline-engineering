@@ -5,7 +5,10 @@ import { motion } from 'framer-motion';
 import { useLanguage } from '@/components/i18n/LanguageProvider';
 import { locationPaths, type LocationKey } from '@/data/seo';
 
-const order: LocationKey[] = ['finestrat', 'benidorm', 'costaBlanca'];
+// Benidorm first: the main commercial priority (Finestrat stays listed — it's
+// the company's actual registered base). Must stay in sync with the paired
+// `data/translations.ts` `home.locationsItems` array order (index 0 = Benidorm).
+const order: LocationKey[] = ['benidorm', 'finestrat', 'costaBlanca'];
 
 function Lines({ text }: { text: string }) {
   const [first, second] = text.split('\n');

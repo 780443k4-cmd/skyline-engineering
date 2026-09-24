@@ -1,20 +1,24 @@
 # Skyline Engineering
 
-> Turnkey villa construction in Benidorm and Finestrat, Costa Blanca, Spain. Architecture, engineering, permits, construction and interiors under one coordinated process — from land analysis to handover.
+> Construction company based in Finestrat, Alicante, specialising in turnkey construction of private houses and villas in Benidorm, Finestrat and the surrounding Costa Blanca. Plot assistance, architecture, permits, construction, engineering and finishing under one coordinated process — from land analysis to handover.
 
-Skyline Engineering (legal name: SKYLINE ENGINEERING, S.L.) is a construction company registered and based in Finestrat, Alicante, building turnkey private villas in Finestrat, Benidorm and across the wider Costa Blanca (Altea, Altea Hills, La Nucía, Polop, Calpe, Benissa, Moraira, Jávea). Founded and led by Denys Druz (Architect · Civil Engineer, 25+ years of experience in construction and engineering design).
+Skyline Engineering (legal name: SKYLINE ENGINEERING, S.L.) is a construction company registered and based in Finestrat, Alicante. It builds turnkey private houses and villas in Benidorm — its main commercial service area — and across the surrounding Costa Blanca: Finestrat, La Nucía, Polop, L'Alfàs del Pi, Altea, Altea Hills, Calpe, Benissa, Moraira, Jávea. Founded and led by Denys Druz (Architect · Civil Engineer, 25+ years of experience in construction and engineering design).
+
+## Services
+
+Plot assistance and feasibility review, architecture and design coordination, building licence, construction, engineering systems, finishing, pool and landscaping, technical supervision and project management, handover.
 
 ## Pages
 
-- [Home](https://www.skylineengineering.es/en): overview of services and the coordinated design-and-build process
-- [Villa Construction Finestrat](https://www.skylineengineering.es/en/villa-construction-finestrat): villa construction in Finestrat, where Skyline Engineering is based
-- [Villa Construction Benidorm](https://www.skylineengineering.es/en/villa-construction-benidorm): villa construction in Benidorm and its surrounding urbanizations
-- [Villa Construction Costa Blanca](https://www.skylineengineering.es/en/villa-construction-costa-blanca): villa construction across the wider Costa Blanca region
-- [Villas](https://www.skylineengineering.es/en/villas): villa concepts with indicative specifications and budgets
-- [Projects](https://www.skylineengineering.es/en/projects): real Skyline Engineering projects, published as they are completed
-- [Process](https://www.skylineengineering.es/en/process): the step-by-step process from land analysis to handover
-- [About](https://www.skylineengineering.es/en/about): the team and engineering-led approach
-- [FAQ](https://www.skylineengineering.es/en/faq): common questions about services, process, budget and timelines
-- [Contact](https://www.skylineengineering.es/en/contact): get in touch about a plot or project
+- [Home](https://www.skylineengineering.es/uk): overview of services and the coordinated design-and-build process
+- [Villa Construction Benidorm](https://www.skylineengineering.es/uk/villa-construction-benidorm): house and villa construction in Benidorm and its surrounding urbanizations — the main commercial location page
+- [Villa Construction Finestrat](https://www.skylineengineering.es/uk/villa-construction-finestrat): villa construction in Finestrat, where Skyline Engineering is registered and based
+- [Villa Construction Costa Blanca](https://www.skylineengineering.es/uk/villa-construction-costa-blanca): villa construction across the wider Costa Blanca region
+- [Villas](https://www.skylineengineering.es/uk/villas): villa concepts with indicative specifications and budgets
+- [Projects](https://www.skylineengineering.es/uk/projects): real Skyline Engineering projects, published as they are completed, including a completed six-villa development in La Nucía
+- [Process](https://www.skylineengineering.es/uk/process): the step-by-step process from land analysis to handover
+- [About](https://www.skylineengineering.es/uk/about): the team and engineering-led approach
+- [FAQ](https://www.skylineengineering.es/uk/faq): common questions about services, process, budget and timelines
+- [Contact](https://www.skylineengineering.es/uk/contact): get in touch about a plot or project
 
-Other languages: replace `/en/` with `/es/`, `/ru/` or `/uk/` in the URLs above for the Spanish, Russian and Ukrainian versions of the same pages.
+Ukrainian (`/uk/`) is this site's primary language, followed by Russian (`/ru/`). English (`/en/`) and Spanish (`/es/`) versions of the same pages are also available — replace `/uk/` with the desired language code in the URLs above.

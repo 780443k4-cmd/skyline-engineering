@@ -161,7 +161,16 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
       )}
 
       <section className="py-10 border-b border-line">
-        <div className="container-content">
+        <div className="container-content flex flex-col sm:flex-row gap-4 sm:gap-8">
+          {/* La Nucía sits within Skyline's Benidorm-area service radius (see
+              locationPages.costaBlanca), so this completed project links back
+              to both the Benidorm hub page and the wider Costa Blanca page. */}
+          <Link
+            href={localizePath(locationPaths.benidorm)}
+            className="text-sm underline hover:text-skyline transition-colors"
+          >
+            {t.locationPages.benidorm.eyebrow}
+          </Link>
           <Link
             href={localizePath(locationPaths.costaBlanca)}
             className="text-sm underline hover:text-skyline transition-colors"

@@ -7,7 +7,11 @@ function preferredLocale(request: NextRequest) {
     const language = part.trim().split(';')[0].split('-')[0];
     if (locales.includes(language as (typeof locales)[number])) return language;
   }
-  return 'en';
+  // AUD-002: Ukrainian is the site's primary language (Ukrainian diaspora in
+  // Europe first, Russian-speaking diaspora second) — the no-match fallback
+  // must resolve to /uk, not /en, or the root redirect silently contradicts
+  // that decision for every visitor whose Accept-Language doesn't match.
+  return 'uk';
 }
 
 export function proxy(request: NextRequest) {

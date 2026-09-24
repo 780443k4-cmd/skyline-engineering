@@ -30,13 +30,19 @@ export const site = {
     { label: 'Contact', href: '/contact' },
     { label: 'FAQ', href: '/faq' },
   ],
+  // Benidorm listed first: the main commercial/semantic priority for search
+  // and LLM retrieval (Denis, 2026-09-24). Finestrat remains the company's
+  // actual registered base (see legal.address above) and stays in this list —
+  // ordering here is a commercial-emphasis signal only, not a claim about
+  // where the company is legally located.
   locations: [
-    'Finestrat',
     'Benidorm',
-    'Altea',
-    'Altea Hills',
+    'Finestrat',
     'La Nucía',
     'Polop',
+    "L'Alfàs del Pi",
+    'Altea',
+    'Altea Hills',
     'Calpe',
     'Benissa',
     'Moraira',
