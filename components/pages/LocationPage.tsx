@@ -42,21 +42,29 @@ type LocationContent = {
   cta: string;
   ctaText: string;
   crossLinksTitle: string;
+  // Localized Service entity fields (AUD-audit fix): schema.org allows free-text
+  // name/serviceType, and keeping them in the page's own language matches the
+  // rest of the JSON-LD (FAQPage) instead of hardcoding English for every locale.
+  serviceName: string;
+  serviceType: string;
 };
 
 export function LocationPage({ location }: { location: LocationKey }) {
-  const { t } = useLanguage();
+  const { t, localizePath } = useLanguage();
   const content: LocationContent = t.locationPages[location];
   const organizationId = `${site.url}#organization`;
-  const pageUrl = `${site.url}${locationPaths[location]}`;
+  // AUD-audit fix: must include the locale segment (via localizePath), otherwise
+  // every language version of this page emitted the identical, locale-less,
+  // redirecting URL here instead of its own canonical URL.
+  const pageUrl = `${site.url}${localizePath(locationPaths[location])}`;
 
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
       {
         '@type': 'Service',
-        name: `Turnkey villa construction — ${areaServedName[location]}`,
-        serviceType: 'Turnkey villa construction',
+        name: content.serviceName,
+        serviceType: content.serviceType,
         provider: { '@id': organizationId },
         areaServed: { '@type': location === 'costaBlanca' ? 'AdministrativeArea' : 'City', name: areaServedName[location] },
         url: pageUrl,

@@ -308,6 +308,8 @@ const pages = {
         cta: 'Обговорімо\nвашу ділянку у Фінестраті.',
         ctaText: 'Розкажіть нам про ділянку у Фінестраті або свою ідею — ми допоможемо визначити наступний крок.',
         crossLinksTitle: 'Будівництво вілл в інших локаціях',
+        serviceName: 'Будівництво вілл під ключ — Фінестрат',
+        serviceType: 'Будівництво будинків і вілл під ключ',
       },
       benidorm: {
         eyebrow: 'Будівельна компанія в Бенідормі',
@@ -331,6 +333,8 @@ const pages = {
         cta: 'Обговорімо\nвашу віллу в Бенідормі.',
         ctaText: 'Розкажіть нам про ділянку в Бенідормі або свою ідею — ми допоможемо визначити наступний крок.',
         crossLinksTitle: 'Будівництво вілл в інших локаціях',
+        serviceName: 'Будівництво вілл під ключ — Бенідорм',
+        serviceType: 'Будівництво будинків і вілл під ключ',
       },
       costaBlanca: {
         eyebrow: 'Будівництво вілл на Коста-Бланці',
@@ -349,6 +353,8 @@ const pages = {
         cta: 'Обговорімо\nвашу віллу на Коста-Бланці.',
         ctaText: 'Розкажіть нам про ділянку на Коста-Бланці або свою ідею — ми допоможемо визначити наступний крок.',
         crossLinksTitle: 'Будівництво вілл в інших локаціях',
+        serviceName: 'Будівництво вілл під ключ — Коста-Бланка',
+        serviceType: 'Будівництво будинків і вілл під ключ',
       },
     },
     projectsPage: {
@@ -564,6 +570,8 @@ const pages = {
         cta: 'Обсудим\nваш участок в Финестрате.',
         ctaText: 'Расскажите нам об участке в Финестрате или своей идее — мы поможем определить следующий шаг.',
         crossLinksTitle: 'Строительство вилл в других локациях',
+        serviceName: 'Строительство вилл под ключ — Финестрат',
+        serviceType: 'Строительство домов и вилл под ключ',
       },
       benidorm: {
         eyebrow: 'Строительная компания в Бенидорме',
@@ -587,6 +595,8 @@ const pages = {
         cta: 'Обсудим\nвашу виллу в Бенидорме.',
         ctaText: 'Расскажите нам об участке в Бенидорме или своей идее — мы поможем определить следующий шаг.',
         crossLinksTitle: 'Строительство вилл в других локациях',
+        serviceName: 'Строительство вилл под ключ — Бенидорм',
+        serviceType: 'Строительство домов и вилл под ключ',
       },
       costaBlanca: {
         eyebrow: 'Строительство вилл на Коста-Бланке',
@@ -605,6 +615,8 @@ const pages = {
         cta: 'Обсудим\nвашу виллу на Коста-Бланке.',
         ctaText: 'Расскажите нам об участке на Коста-Бланке или своей идее — мы поможем определить следующий шаг.',
         crossLinksTitle: 'Строительство вилл в других локациях',
+        serviceName: 'Строительство вилл под ключ — Коста-Бланка',
+        serviceType: 'Строительство домов и вилл под ключ',
       },
     },
     projectsPage: {
@@ -819,6 +831,8 @@ const pages = {
         cta: 'Let\'s discuss\nyour plot in Finestrat.',
         ctaText: 'Tell us about your plot in Finestrat, or your idea — we\'ll help define the next step.',
         crossLinksTitle: 'Villa construction in other locations',
+        serviceName: 'Turnkey Villa Construction — Finestrat',
+        serviceType: 'Turnkey house and villa construction',
       },
       benidorm: {
         eyebrow: 'Construction Company in Benidorm',
@@ -838,6 +852,8 @@ const pages = {
         cta: 'Let\'s discuss\nyour villa in Benidorm.',
         ctaText: 'Tell us about your plot in Benidorm, or your idea — we\'ll help define the next step.',
         crossLinksTitle: 'Villa construction in other locations',
+        serviceName: 'Turnkey Villa Construction — Benidorm',
+        serviceType: 'Turnkey house and villa construction',
       },
       costaBlanca: {
         eyebrow: 'Villa Construction Costa Blanca',
@@ -856,6 +872,8 @@ const pages = {
         cta: 'Let\'s discuss\nyour Costa Blanca villa.',
         ctaText: 'Tell us about your plot on the Costa Blanca, or your idea — we\'ll help define the next step.',
         crossLinksTitle: 'Villa construction in other locations',
+        serviceName: 'Turnkey Villa Construction — Costa Blanca',
+        serviceType: 'Turnkey house and villa construction',
       },
     },
     projectsPage: {
@@ -1068,6 +1086,8 @@ const pages = {
         cta: 'Hablemos de\ntu parcela en Finestrat.',
         ctaText: 'Cuéntanos sobre tu parcela en Finestrat, o tu idea — te ayudamos a definir el siguiente paso.',
         crossLinksTitle: 'Construcción de villas en otras zonas',
+        serviceName: 'Construcción de Villas Llave en Mano — Finestrat',
+        serviceType: 'Construcción de viviendas y villas llave en mano',
       },
       benidorm: {
         eyebrow: 'Empresa Constructora en Benidorm',
@@ -1087,6 +1107,8 @@ const pages = {
         cta: 'Hablemos de\ntu villa en Benidorm.',
         ctaText: 'Cuéntanos sobre tu parcela en Benidorm, o tu idea — te ayudamos a definir el siguiente paso.',
         crossLinksTitle: 'Construcción de villas en otras zonas',
+        serviceName: 'Construcción de Villas Llave en Mano — Benidorm',
+        serviceType: 'Construcción de viviendas y villas llave en mano',
       },
       costaBlanca: {
         eyebrow: 'Construcción de Villas en Costa Blanca',
@@ -1105,6 +1127,8 @@ const pages = {
         cta: 'Hablemos de\ntu villa en la Costa Blanca.',
         ctaText: 'Cuéntanos sobre tu parcela en la Costa Blanca, o tu idea — te ayudamos a definir el siguiente paso.',
         crossLinksTitle: 'Construcción de villas en otras zonas',
+        serviceName: 'Construcción de Villas Llave en Mano — Costa Blanca',
+        serviceType: 'Construcción de viviendas y villas llave en mano',
       },
     },
     projectsPage: {
