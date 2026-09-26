@@ -32,6 +32,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     // AUD-002: Ukrainian is the site's primary language — x-default points at /uk.
     alternates: { canonical, languages: { ...languages, 'x-default': localizedPath('uk', path) } },
     openGraph: { title, description: summary, url: canonical, siteName: 'SKYLINE Engineering', type: 'website' },
+    // AUD-audit: previously unset here (relied on the Next.js default, which
+    // is index/follow but emits no explicit <meta name="robots"> tag). Every
+    // entry in data/projects.ts is, by that file's own contract, already a
+    // verified real project meant to be public — there is no draft/private
+    // status field to gate on — so every project page is explicitly indexable.
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+        'max-video-preview': -1,
+      },
+    },
   };
 }
 

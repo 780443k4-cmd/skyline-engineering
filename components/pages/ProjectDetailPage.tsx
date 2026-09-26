@@ -26,17 +26,39 @@ export default function ProjectDetailPage({ slug }: { slug: string }) {
   const isTurnkey = project!.status === 'completed' && project!.servicesProvided.length >= 6;
   const organizationId = `${site.url}#organization`;
   const pageUrl = `${site.url}${localizedPath(locale, `/projects/${slug}`)}`;
+  const placeId = `${pageUrl}#place`;
 
+  // AUD-audit: this page previously only carried an abstract Service + a
+  // Breadcrumb — nothing tied "completed", the real location or the real
+  // project photos into the graph. Everything added below reuses fields
+  // already present in data/projects.ts (no invented facts): a Place node so
+  // areaServed links to a real, addressable location instead of a bare
+  // string, `image` from the project's own gallery, and — only when the data
+  // actually says so — an explicit machine-readable "completed" signal via
+  // the standard PropertyValue mechanism (schema.org has no dedicated
+  // "status" property on Service, so this is the correct extension point
+  // rather than inventing a non-standard field).
   const jsonLd = {
     '@context': 'https://schema.org',
     '@graph': [
+      {
+        '@type': 'Place',
+        '@id': placeId,
+        name: project!.location,
+        address: { '@type': 'PostalAddress', addressLocality: project!.location, addressCountry: 'ES' },
+        containedInPlace: { '@type': 'AdministrativeArea', name: 'Costa Blanca' },
+      },
       {
         '@type': 'Service',
         name: `${project!.name} — turnkey villa construction, ${project!.location}`,
         serviceType: 'Turnkey villa construction',
         provider: { '@id': organizationId },
-        areaServed: { '@type': 'City', name: project!.location },
+        areaServed: { '@id': placeId },
+        image: project!.gallery.map((g) => `${site.url}${g.src}`),
         url: pageUrl,
+        ...(project!.status === 'completed'
+          ? { additionalProperty: { '@type': 'PropertyValue', name: 'projectStatus', value: 'completed' } }
+          : {}),
       },
       {
         '@type': 'BreadcrumbList',
