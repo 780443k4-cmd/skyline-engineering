@@ -55,7 +55,7 @@ const jsonLd = {
       logo: `${site.url}/images/logo/skyline-logo-full.png`,
       image: `${site.url}/images/og-cover.jpg`,
       description:
-        'Skyline Engineering is a construction company based in Finestrat, Alicante, specialising in turnkey construction of private houses and villas in Benidorm, Finestrat and across the surrounding Costa Blanca, Spain.',
+        'Skyline Engineering is a construction company based in Finestrat, Alicante. We build turnkey private houses and villas in Benidorm, Finestrat and across the Costa Blanca, and carry out full renovation and refurbishment of homes, apartments, offices, commercial and industrial premises, including interior fit-out, building systems and finishing works.',
       taxID: site.legal.nif,
       email: site.email,
       telephone: site.phoneDisplay,
@@ -85,6 +85,14 @@ const jsonLd = {
       '@type': 'Service',
       name: 'Turnkey House & Villa Construction — Benidorm, Finestrat & Costa Blanca',
       serviceType: 'Turnkey house and villa design and construction',
+      provider: { '@id': organizationId },
+      areaServed: [...site.locations.map((name) => ({ '@type': 'City', name })), ...regionAreaServed],
+    },
+    {
+      '@type': 'Service',
+      name: 'Renovation & Refurbishment — Costa Blanca',
+      serviceType:
+        'Renovation and refurbishment of homes, apartments, offices, commercial and industrial premises',
       provider: { '@id': organizationId },
       areaServed: [...site.locations.map((name) => ({ '@type': 'City', name })), ...regionAreaServed],
     },

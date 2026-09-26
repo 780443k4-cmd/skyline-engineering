@@ -133,7 +133,7 @@ const pages = {
       title1: 'Будівництво вілл під ключ',
       title2: 'у Бенідормі та Фінестраті.',
       intro:
-        'SKYLINE Engineering — будівельна компанія з Фінестрата (Аліканте), що спеціалізується на будівництві приватних будинків і вілл під ключ у Бенідормі, Фінестраті та на Коста-Бланці.',
+        'SKYLINE Engineering — будівельна компанія з Фінестрата (Аліканте): будуємо приватні будинки та вілли під ключ у Бенідормі, Фінестраті та на Коста-Бланці, а також виконуємо комплексний ремонт і реконструкцію будинків, квартир, офісів, комерційних і промислових приміщень.',
       subtitle: 'Вілла під ключ від €400 000',
       services: 'Архітектура · Інженерія · Будівництво · Дизайн',
       discuss: 'Отримати розрахунок будівництва',
@@ -395,7 +395,7 @@ const pages = {
       title1: 'Строительство вилл под ключ',
       title2: 'в Бенидорме и Финестрате.',
       intro:
-        'SKYLINE Engineering — строительная компания из Финестрата (Аликанте), специализирующаяся на строительстве частных домов и вилл под ключ в Бенидорме, Финестрате и на Коста-Бланке.',
+        'SKYLINE Engineering — строительная компания из Финестрата (Аликанте): строим частные дома и виллы под ключ в Бенидорме, Финестрате и на Коста-Бланке, а также выполняем комплексный ремонт и реконструкцию домов, квартир, офисов, коммерческих и промышленных помещений.',
       subtitle: 'Вилла под ключ от €400 000',
       services: 'Архитектура · Инженерия · Строительство · Дизайн',
       discuss: 'Получить расчёт строительства',
@@ -657,7 +657,7 @@ const pages = {
       title1: 'Turnkey Villa Construction',
       title2: 'in Benidorm & Finestrat.',
       intro:
-        'Skyline Engineering is a construction company based in Finestrat, Alicante, specialising in turnkey construction of private houses and villas in Benidorm, Finestrat and the Costa Blanca.',
+        'Skyline Engineering is a construction company based in Finestrat, Alicante — building turnkey private houses and villas in Benidorm, Finestrat and the Costa Blanca, and carrying out full renovation and refurbishment of homes, apartments, offices, commercial and industrial premises.',
       subtitle: 'Turnkey villa from €400,000',
       services: 'Architecture · Engineering · Construction · Design',
       discuss: 'Get a Construction Estimate',
@@ -914,7 +914,7 @@ const pages = {
       title1: 'Villas Llave en Mano',
       title2: 'en Benidorm y Finestrat.',
       intro:
-        'Skyline Engineering es una empresa constructora con sede en Finestrat (Alicante), especializada en la construcción de viviendas y villas privadas llave en mano en Benidorm, Finestrat y la Costa Blanca.',
+        'Skyline Engineering es una empresa constructora con sede en Finestrat (Alicante): construimos casas y villas privadas llave en mano en Benidorm, Finestrat y la Costa Blanca, y realizamos reformas integrales y rehabilitación de viviendas, apartamentos, oficinas, locales comerciales e industriales.',
       subtitle: 'Villa llave en mano desde 400.000 €',
       services: 'Arquitectura · Ingeniería · Construcción · Diseño',
       discuss: 'Solicitar un presupuesto de construcción',
